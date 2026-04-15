@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#2a3439",
+                    "on-background": "#2a3439",
+                    "primary-fixed": "#dae2fd",
+                    "secondary-dim": "#465468",
+                    "surface-container": "#e8eff3",
+                    "inverse-surface": "#0b0f10",
+                    "background": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5b5672",
+                    "on-primary-fixed-variant": "#535b71",
+                    "surface-container-low": "#f0f4f7",
+                    "surface-tint": "#565e74",
+                    "on-tertiary": "#fcf7ff",
+                    "error-container": "#fe8983",
+                    "on-primary": "#f7f7ff",
+                    "error": "#9f403d",
+                    "primary-dim": "#4a5268",
+                    "inverse-primary": "#dae2fd",
+                    "error-dim": "#4e0309",
+                    "primary-fixed-dim": "#ccd4ee",
+                    "tertiary-fixed": "#e3dbfd",
+                    "inverse-on-surface": "#9a9d9f",
+                    "on-secondary-container": "#455367",
+                    "surface-container-high": "#e1e9ee",
+                    "outline-variant": "#a9b4b9",
+                    "surface-dim": "#cfdce3",
+                    "on-primary-fixed": "#373f54",
+                    "on-error-container": "#752121",
+                    "on-primary-container": "#4a5167",
+                    "tertiary-fixed-dim": "#d4cdee",
+                    "on-tertiary-container": "#514d68",
+                    "on-error": "#fff7f6",
+                    "primary": "#565e74",
+                    "secondary-fixed-dim": "#c7d5ed",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed": "#324053",
+                    "on-surface-variant": "#566166",
+                    "secondary-container": "#d5e3fc",
+                    "surface-container-highest": "#d9e4ea",
+                    "surface": "#f7f9fb",
+                    "primary-container": "#dae2fd",
+                    "outline": "#717c82",
+                    "secondary": "#526074",
+                    "on-tertiary-fixed": "#3e3a54",
+                    "on-secondary-fixed-variant": "#4e5c71",
+                    "tertiary-container": "#e3dbfd",
+                    "on-secondary": "#f8f8ff",
+                    "secondary-fixed": "#d5e3fc",
+                    "surface-variant": "#d9e4ea",
+                    "tertiary": "#605c78",
+                    "tertiary-dim": "#54506b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="w-full top-0 z-50 bg-[#f7f9fb] dark:bg-slate-900 shadow-none duration-200 ease-in-out">
+<div class="flex items-center justify-between px-8 py-4 max-w-full">
+<div class="text-xl font-bold tracking-tighter text-slate-800 dark:text-slate-100 font-headline">LegacyGuard</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-inter text-sm font-medium tracking-tight text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Home</a>
+<a class="font-inter text-sm font-medium tracking-tight text-slate-900 dark:text-white border-b-2 border-slate-600 dark:border-slate-400 pb-1" href="#">Services</a>
+<a class="font-inter text-sm font-medium tracking-tight text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Support</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-4 py-2 font-inter text-sm font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition-colors">Client Login</button>
+<button class="px-4 py-2 font-inter text-sm font-medium tracking-tight bg-primary text-on-primary rounded shadow-sm hover:brightness-110 transition-all">Audit Request</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow max-w-7xl mx-auto px-8 py-16 w-full">
+<!-- Institutional Header Section -->
+<header class="mb-20 max-w-3xl">
+<div class="mb-4 inline-flex items-center px-3 py-1 bg-surface-container-high rounded-full">
+<span class="text-[10px] font-bold tracking-[0.15em] text-outline uppercase font-label">Niveles de Servicio 2024</span>
+</div>
+<h1 class="text-5xl font-black text-on-surface tracking-tighter mb-6 font-headline">Servicios de Auditoría Institucional</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed font-body">
+                Sistemas de verificación de grado soberano. Nuestra arquitectura de auditoría proporciona una capa de confianza inamovible para infraestructuras críticas y marcos regulatorios complejos.
+            </p>
+</header>
+<!-- Services Bento-Inspired Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+<!-- Service 1: Auditoría de Bases de Datos -->
+<div class="md:col-span-8 group relative bg-surface-container-lowest overflow-hidden flex flex-col justify-between">
+<!-- Audit Status Ribbon (Component) -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="p-10 flex flex-col md:flex-row gap-10">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="database">database</span>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface font-headline">Auditoría de Bases de Datos</h2>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-8 max-w-lg font-body">
+                            Análisis forense y estructural de repositorios de datos masivos. Implementamos protocolos de validación íntegra para asegurar que cada entrada en su ledger institucional sea inalterable y auditable.
+                        </p>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="check_circle">check_circle</span>
+<span class="text-sm font-medium text-on-surface font-label">Trazabilidad de Transacciones de Nivel 0</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="check_circle">check_circle</span>
+<span class="text-sm font-medium text-on-surface font-label">Detección de Anomalías Basada en Patrones</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-64 h-64 bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-4">
+<img alt="Server infrastructure" class="w-full h-full object-cover rounded opacity-80 mix-blend-multiply grayscale" data-alt="Modern clean server room racks with blue status lights in a clinical, bright data center environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf8tfuTMPm_hUnvxpucvBpbA9JWhtFXVbWOaQON1kzlSBpMcXsiMJaeEb6h1uLrWGo_lNAkCVu5cJQiYk-HF6SjTFfUA8Mt606gikYYK2yOsDcXtmEsFIoPKBkRkZN7MeNfGpec2Tc-GsyMrUIc9TSncbgU-uGC3fPBSPKPTeCusJOXo38wgs0SYHNxdj09Q-0XEgHCf912EvZ7xvjw8Pln_fcPD4O_4WaLKN9bohsdR39oTAAQKzUS5g2zkGBquvc6gSQh9WtTog"/>
+</div>
+</div>
+<div class="px-10 py-6 bg-surface-container-low flex justify-between items-center">
+<span class="text-xs font-semibold text-outline tracking-widest uppercase font-label">Ref: DB-AUDIT-PROTO</span>
+<button class="text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">
+                        Especificaciones Técnicas <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service 2: Cumplimiento Normativo -->
+<div class="md:col-span-4 bg-surface-container-lowest relative flex flex-col">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-fixed-dim"></div>
+<div class="p-10 flex-grow">
+<div class="mb-12">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="gavel">gavel</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface mb-4 font-headline">Cumplimiento Normativo (Compliance)</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed font-body">
+                            Sincronización en tiempo real con marcos regulatorios internacionales (GDPR, ISO 27001, SOC2). Transformamos la burocracia en una ventaja competitiva.
+                        </p>
+</div>
+<div class="p-4 bg-surface-container-low border-l-2 border-outline-variant/20 mb-6">
+<span class="block text-[10px] font-bold text-outline uppercase mb-2 font-label">Estado Regulatorio</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-on-surface">Standard Protocol Active</span>
+</div>
+</div>
+</div>
+<div class="p-10 pt-0">
+<button class="w-full py-3 bg-surface-container-high text-on-surface font-bold text-sm hover:bg-surface-container-highest transition-colors">
+                        Descargar Whitepaper
+                    </button>
+</div>
+</div>
+<!-- Service 3: Planes de Continuidad -->
+<div class="md:col-span-12 lg:col-span-6 bg-primary text-on-primary p-12 flex flex-col justify-between min-h-[400px]">
+<div>
+<span class="material-symbols-outlined text-5xl mb-8" data-icon="shield">shield</span>
+<h2 class="text-3xl font-black tracking-tight mb-6 font-headline">Planes de Continuidad Institucional</h2>
+<p class="text-primary-fixed opacity-90 leading-relaxed max-w-xl font-body">
+                        Arquitectura de resiliencia para fallos sistémicos. Diseñamos protocolos de "Cold-Storage" y redundancia operativa para asegurar que su institución nunca detenga su procesamiento, sin importar la escala del incidente.
+                    </p>
+</div>
+<div class="mt-12 flex flex-wrap gap-8 items-center border-t border-on-primary/10 pt-8">
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim font-label">RTO Objetivo</span>
+<span class="text-2xl font-bold font-headline">&lt; 15 min</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim font-label">Redundancia</span>
+<span class="text-2xl font-bold font-headline">Tier IV</span>
+</div>
+<div class="ml-auto">
+<button class="px-6 py-3 border border-on-primary text-on-primary font-bold text-sm hover:bg-on-primary hover:text-primary transition-all">
+                            Consultar Protocolo
+                        </button>
+</div>
+</div>
+</div>
+<!-- Contextual Data Summary (Supporting the Services) -->
+<div class="md:col-span-12 lg:col-span-6 bg-surface-container-high p-12 flex flex-col justify-center">
+<h3 class="text-xs font-bold text-outline tracking-[0.2em] uppercase mb-10 font-label">Métricas de Confianza de Red</h3>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-2">
+<span class="text-4xl font-black text-on-surface font-headline">99.99%</span>
+<p class="text-xs text-on-surface-variant font-medium leading-tight font-body">Integridad de datos verificada por auditoría externa.</p>
+</div>
+<div class="space-y-2">
+<span class="text-4xl font-black text-on-surface font-headline">1.2M+</span>
+<p class="text-xs text-on-surface-variant font-medium leading-tight font-body">Puntos de control procesados diariamente.</p>
+</div>
+<div class="space-y-2">
+<span class="text-4xl font-black text-on-surface font-headline">24/7</span>
+<p class="text-xs text-on-surface-variant font-medium leading-tight font-body">Vigilancia autónoma de vectores de riesgo.</p>
+</div>
+<div class="space-y-2">
+<span class="text-4xl font-black text-on-surface font-headline">Zero</span>
+<p class="text-xs text-on-surface-variant font-medium leading-tight font-body">Brechas de seguridad reportadas en el último ciclo.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Call to Action -->
+<section class="mt-24 p-16 bg-surface-container-lowest border-t-4 border-primary">
+<div class="max-w-2xl">
+<h2 class="text-3xl font-bold text-on-surface tracking-tight mb-4 font-headline">¿Requiere una evaluación personalizada?</h2>
+<p class="text-on-surface-variant mb-8 font-body">Nuestros auditores senior están disponibles para realizar una revisión inicial de su arquitectura de sistemas y marcos de cumplimiento.</p>
+<div class="flex gap-4">
+<button class="px-8 py-4 bg-primary text-on-primary font-bold rounded shadow-sm hover:brightness-110 transition-all">Contactar con un Especialista</button>
+<button class="px-8 py-4 bg-surface-container-low text-on-surface font-bold rounded hover:bg-surface-container-high transition-all">Solicitar Demo</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-[#cfdce3] dark:bg-slate-950 duration-200">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full opacity-80 hover:opacity-100 transition-opacity">
+<div class="text-lg font-black text-slate-900 dark:text-slate-100 font-headline mb-4 md:mb-0">LegacyGuard</div>
+<div class="flex flex-wrap justify-center gap-6 mb-4 md:mb-0">
+<a class="font-inter text-xs tracking-wide uppercase font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Privacy Policy</a>
+<a class="font-inter text-xs tracking-wide uppercase font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Terms of Service</a>
+<a class="font-inter text-xs tracking-wide uppercase font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Security Whitepaper</a>
+<a class="font-inter text-xs tracking-wide uppercase font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Regulatory Compliance</a>
+</div>
+<p class="font-inter text-xs tracking-wide uppercase font-semibold text-slate-700 dark:text-slate-300">
+                © 2024 LegacyGuard Systems. Institutional Authority in System Auditing.
+            </p>
+</div>
+</footer>
+</body></html>

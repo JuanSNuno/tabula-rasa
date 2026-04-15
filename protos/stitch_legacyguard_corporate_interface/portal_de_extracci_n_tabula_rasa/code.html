@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EXTRACTION_PORTAL_V.04</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#39393b",
+                    "inverse-surface": "#e5e1e4",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#c08600",
+                    "surface": "#131315",
+                    "tertiary-fixed": "#7e5700",
+                    "on-tertiary-fixed-variant": "#ffdeac",
+                    "on-primary-fixed": "#ffffff",
+                    "on-secondary-fixed-variant": "#3b3b3e",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#e2e1eb",
+                    "on-secondary": "#1b1b1e",
+                    "inverse-primary": "#5d5e66",
+                    "on-tertiary-fixed": "#ffffff",
+                    "surface-container-low": "#1c1b1d",
+                    "on-secondary-fixed": "#1b1b1e",
+                    "on-tertiary-container": "#000000",
+                    "surface-container": "#201f22",
+                    "on-error": "#690005",
+                    "tertiary": "#ffdeac",
+                    "on-background": "#e5e1e4",
+                    "on-surface": "#e5e1e4",
+                    "surface-container-high": "#2a2a2c",
+                    "primary": "#ffffff",
+                    "outline": "#919191",
+                    "secondary-fixed-dim": "#acaaae",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-primary-container": "#000000",
+                    "surface-variant": "#353437",
+                    "primary-fixed": "#5d5e66",
+                    "on-secondary-container": "#e4e1e5",
+                    "surface-container-highest": "#353437",
+                    "secondary": "#c8c6c9",
+                    "on-surface-variant": "#c6c6c6",
+                    "background": "#131315",
+                    "tertiary-fixed-dim": "#604100",
+                    "on-tertiary": "#281900",
+                    "outline-variant": "#474747",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#313032",
+                    "on-primary": "#1a1b22",
+                    "surface-tint": "#c6c6cf",
+                    "secondary-fixed": "#c8c6c9",
+                    "surface-dim": "#131315",
+                    "primary-fixed-dim": "#45464e",
+                    "secondary-container": "#47464a",
+                    "primary-container": "#d4d3dd"
+            },
+            "borderRadius": {
+                    "none": "0px",
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "fontFamily": {
+                    "mono": ["JetBrains Mono", "monospace"],
+                    "headline": ["JetBrains Mono", "monospace"],
+                    "body": ["JetBrains Mono", "monospace"],
+                    "label": ["JetBrains Mono", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'JetBrains Mono', monospace; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131315; }
+        ::-webkit-scrollbar-thumb { background: #353437; }
+        .scan-line {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-background h-screen w-screen overflow-hidden flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-zinc-950 border-b border-zinc-800/20 flex justify-between items-center px-6 h-12 w-full font-mono uppercase tracking-tighter text-sm">
+<div class="flex items-center gap-4">
+<span class="font-mono font-bold tracking-widest text-zinc-100">EXTRACTION_PORTAL_V.04</span>
+<span class="text-tertiary-container animate-pulse flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-tertiary-container"></span>
+                STATUS: SECURE CONDUIT ESTABLISHED
+            </span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="text-zinc-500">SESSION_ID:</span>
+<span class="text-zinc-100">[7d2f9a1b8c3e4]</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-zinc-100 text-sm">sensors</span>
+<span class="material-symbols-outlined text-zinc-100 text-sm">security</span>
+<span class="material-symbols-outlined text-zinc-100 text-sm">terminal</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-12">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-12 h-screen w-64 flex flex-col bg-zinc-950 border-r border-zinc-800/20 font-mono text-xs tracking-tight">
+<div class="p-4 border-b border-zinc-800/20 bg-zinc-900/50">
+<div class="font-mono font-black text-zinc-100 text-base">OP_09</div>
+<div class="text-zinc-500">SECTOR_7</div>
+</div>
+<div class="flex flex-col py-2">
+<a class="flex items-center gap-3 px-6 py-4 bg-zinc-100 text-zinc-950 font-bold duration-75 ease-in" href="#">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+                    DASHBOARD
+                </a>
+<a class="flex items-center gap-3 px-6 py-4 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 duration-75 ease-in" href="#">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+                    CRYPTO_VAL
+                </a>
+<a class="flex items-center gap-3 px-6 py-4 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 duration-75 ease-in" href="#">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+                    COMM_LINK
+                </a>
+<a class="flex items-center gap-3 px-6 py-4 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 duration-75 ease-in" href="#">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+                    LOGS
+                </a>
+</div>
+<div class="mt-auto p-4 border-t border-zinc-800/20">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-zinc-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-500">person</span>
+</div>
+<div>
+<div class="text-zinc-100">OPERATOR_LOGGED</div>
+<div class="text-zinc-500 text-[10px]">AUTH_LVL: 04</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 w-full h-full flex overflow-hidden bg-surface">
+<!-- Left Panel: ZK-KYC Module -->
+<section class="w-1/2 border-r border-zinc-800 flex flex-col p-8 items-center justify-center bg-surface-container-lowest">
+<div class="w-full max-w-md flex flex-col gap-8">
+<div class="flex justify-between items-end border-b border-zinc-800 pb-2">
+<h2 class="text-xs font-bold text-zinc-500 tracking-[0.2em]">ZK-KYC MODULE_01</h2>
+<span class="text-[10px] text-zinc-600">VER_4.9.0_STABLE</span>
+</div>
+<div class="relative aspect-square w-full border-2 border-dashed border-zinc-800 p-8 bg-surface-container-low flex items-center justify-center group">
+<!-- Technical Corner Elements -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-zinc-600"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-zinc-600"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-zinc-600"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-zinc-600"></div>
+<!-- QR Simulation -->
+<div class="relative w-64 h-64 bg-zinc-100 p-2 mix-blend-difference opacity-90 group-hover:opacity-100 transition-opacity">
+<img alt="Security validation QR code" class="w-full h-full grayscale brightness-0" data-alt="high contrast black and white abstract geometric qr code pattern on isolated background for digital security interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4MN4lZJIEShk3NzNCP32iJbUcguNiNVJB7T4IhUG1ymkkTqG77xI0rAc9xsrKUr9htS-Md-uJu3KYUTfL7Bd6etpbBA3-IMKFR4qbl1NFlgGUGVjqHoMDcpVhqFpLLdxrTmx7rG95jWs0CEQBli1kWJByQSTNwesb0YaybigYcY_qCXPwhwkHqUdZPIDk5RSHJAcWEdhIh_MpMaiacR7H31jaAtB6okS9SjIsz89Hg7oJViGC9Bd1SgRvX5rkJ4UyRtE7UFLlPDs"/>
+</div>
+<div class="scan-line top-1/2"></div>
+</div>
+<div class="space-y-4">
+<div class="text-center font-bold tracking-widest text-sm text-on-surface">
+                            AWAITING ZERO-KNOWLEDGE PROOF.<br/>
+                            SCAN TO VALIDATE CLEARANCE
+                        </div>
+<div class="flex flex-col gap-2 p-3 bg-tertiary/5 border border-tertiary/20">
+<div class="flex justify-between items-center text-[10px] text-tertiary">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+                                    SYSTEM_LOG:
+                                </span>
+<span>14:02:11 UTC</span>
+</div>
+<div class="text-tertiary font-bold text-xs uppercase">
+                                OFAC/INTERPOL CHECKS: PENDING
+                            </div>
+</div>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+<div class="bg-surface p-3 space-y-1">
+<div class="text-[10px] text-zinc-500 uppercase">Latency</div>
+<div class="text-xs text-zinc-300">12ms [STABLE]</div>
+</div>
+<div class="bg-surface p-3 space-y-1">
+<div class="text-[10px] text-zinc-500 uppercase">Encryption</div>
+<div class="text-xs text-zinc-300">AES-256-GCM</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Mixnet Chat -->
+<section class="w-1/2 flex flex-col bg-surface overflow-hidden">
+<!-- Chat Header -->
+<div class="h-12 border-b border-zinc-800 flex items-center justify-between px-6 bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-zinc-100 text-sm">chat_bubble</span>
+<span class="text-xs font-bold tracking-tighter">MIXNET_COMM_CHANNEL [ENCRYPTED]</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-none bg-tertiary-container"></div>
+<span class="text-[10px] text-zinc-400">USERS_ONLINE: 02</span>
+</div>
+</div>
+</div>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 flex flex-col-reverse">
+<!-- Bottom spacing -->
+<div class="h-4 w-full"></div>
+<!-- Message 3 -->
+<div class="group flex flex-col gap-1 items-start">
+<div class="flex items-center gap-4 w-full justify-between">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-zinc-500 bg-zinc-900 px-1.5 py-0.5">OP_NODE_09</span>
+<span class="text-[10px] text-zinc-600">14:03:55</span>
+</div>
+<span class="text-[9px] text-tertiary opacity-70 group-hover:opacity-100 transition-opacity">TTL: 14m 59s</span>
+</div>
+<div class="bg-surface-container-high p-3 border-l-2 border-primary w-fit max-w-[85%] text-xs leading-relaxed text-on-surface">
+                            Coordenadas de extracción listas. Aguardando confirmación ZK para el despliegue del paquete. Confirmar integridad del túnel.
+                        </div>
+</div>
+<!-- Message 2 -->
+<div class="group flex flex-col gap-1 items-start">
+<div class="flex items-center gap-4 w-full justify-between">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-primary bg-zinc-800 px-1.5 py-0.5">SYS_DAEMON</span>
+<span class="text-[10px] text-zinc-600">14:02:45</span>
+</div>
+<span class="text-[9px] text-zinc-500">TTL: EXPIRED</span>
+</div>
+<div class="bg-surface-container-low p-3 border-l-2 border-zinc-700 w-fit max-w-[85%] text-xs leading-relaxed text-zinc-400 font-mono">
+                            [SYS]: Sphinx packet routed successfully through nodes: [LUX-01] -&gt; [SIN-04] -&gt; [V_PORT]. Total hops: 12.
+                        </div>
+</div>
+<!-- Message 1 -->
+<div class="group flex flex-col gap-1 items-start">
+<div class="flex items-center gap-4 w-full justify-between">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-zinc-500 bg-zinc-900 px-1.5 py-0.5">OP_NODE_09</span>
+<span class="text-[10px] text-zinc-600">14:01:20</span>
+</div>
+<span class="text-[9px] text-tertiary opacity-70 group-hover:opacity-100 transition-opacity">TTL: 12m 24s</span>
+</div>
+<div class="bg-surface-container-high p-3 border-l-2 border-primary w-fit max-w-[85%] text-xs leading-relaxed text-on-surface">
+                            Canal establecido. Solicitando handshake de operador para sector 7.
+                        </div>
+</div>
+<!-- Start of session log -->
+<div class="w-full flex items-center gap-4 py-4">
+<div class="h-px flex-1 bg-zinc-800/50"></div>
+<span class="text-[10px] text-zinc-600 font-bold tracking-widest uppercase">CONNECTION_INITIATED_UTC_14:00:00</span>
+<div class="h-px flex-1 bg-zinc-800/50"></div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 border-t border-zinc-800 bg-surface-container-low">
+<div class="flex items-center gap-2 bg-zinc-950 border border-zinc-800 focus-within:border-zinc-600 transition-colors">
+<span class="pl-4 text-primary text-xs font-bold">$</span>
+<input class="flex-1 bg-transparent border-none text-xs text-on-surface focus:ring-0 placeholder:text-zinc-700 uppercase tracking-tight py-3" placeholder="ENTER COMMAND OR SECURE MESSAGE..." type="text"/>
+<button class="bg-primary text-on-primary font-bold text-xs px-6 py-3 h-full hover:bg-tertiary hover:text-on-tertiary transition-colors">
+                            SEND
+                        </button>
+</div>
+<div class="mt-2 flex justify-between text-[10px] text-zinc-600 px-1">
+<span>PGP_ENCRYPTION: ENABLED</span>
+<span>CHAR_COUNT: 0/256</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- System Status Bar (Bottom) -->
+<footer class="fixed bottom-0 w-full h-6 bg-zinc-950 border-t border-zinc-800/20 z-50 flex items-center justify-between px-6 text-[9px] text-zinc-500 font-mono">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="w-1 h-1 bg-tertiary-container"></span> CPU_LOAD: 12%</span>
+<span class="flex items-center gap-1"><span class="w-1 h-1 bg-tertiary-container"></span> MEM_UTIL: 4.2GB</span>
+<span class="flex items-center gap-1"><span class="w-1 h-1 bg-tertiary-container"></span> UPTIME: 00:42:19</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-zinc-400">LAT: 51.5074° N, 0.1278° W</span>
+<span class="text-zinc-600">PACKET_LOSS: 0.00%</span>
+<span class="text-primary font-bold">STABLE_CONDUIT</span>
+</div>
+</footer>
+</body></html>

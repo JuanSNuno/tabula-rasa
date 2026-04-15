@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyGuard Systems | Institutional Auditing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#2a3439",
+                    "on-background": "#2a3439",
+                    "primary-fixed": "#dae2fd",
+                    "secondary-dim": "#465468",
+                    "surface-container": "#e8eff3",
+                    "inverse-surface": "#0b0f10",
+                    "background": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5b5672",
+                    "on-primary-fixed-variant": "#535b71",
+                    "surface-container-low": "#f0f4f7",
+                    "surface-tint": "#565e74",
+                    "on-tertiary": "#fcf7ff",
+                    "error-container": "#fe8983",
+                    "on-primary": "#f7f7ff",
+                    "error": "#9f403d",
+                    "primary-dim": "#4a5268",
+                    "inverse-primary": "#dae2fd",
+                    "error-dim": "#4e0309",
+                    "primary-fixed-dim": "#ccd4ee",
+                    "tertiary-fixed": "#e3dbfd",
+                    "inverse-on-surface": "#9a9d9f",
+                    "on-secondary-container": "#455367",
+                    "surface-container-high": "#e1e9ee",
+                    "outline-variant": "#a9b4b9",
+                    "surface-dim": "#cfdce3",
+                    "on-primary-fixed": "#373f54",
+                    "on-error-container": "#752121",
+                    "on-primary-container": "#4a5167",
+                    "tertiary-fixed-dim": "#d4cdee",
+                    "on-tertiary-container": "#514d68",
+                    "on-error": "#fff7f6",
+                    "primary": "#565e74",
+                    "secondary-fixed-dim": "#c7d5ed",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed": "#324053",
+                    "on-surface-variant": "#566166",
+                    "secondary-container": "#d5e3fc",
+                    "surface-container-highest": "#d9e4ea",
+                    "surface": "#f7f9fb",
+                    "primary-container": "#dae2fd",
+                    "outline": "#717c82",
+                    "secondary": "#526074",
+                    "on-tertiary-fixed": "#3e3a54",
+                    "on-secondary-fixed-variant": "#4e5c71",
+                    "tertiary-container": "#e3dbfd",
+                    "on-secondary": "#f8f8ff",
+                    "secondary-fixed": "#d5e3fc",
+                    "surface-variant": "#d9e4ea",
+                    "tertiary": "#605c78",
+                    "tertiary-dim": "#54506b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar Shell -->
+<header class="w-full top-0 z-50 bg-[#f7f9fb] dark:bg-slate-900 duration-200 ease-in-out">
+<nav class="flex items-center justify-between px-8 py-4 max-w-full">
+<div class="text-xl font-bold tracking-tighter text-slate-800 dark:text-slate-100">
+                LegacyGuard
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-inter text-sm font-medium tracking-tight">
+<a class="text-slate-900 dark:text-white border-b-2 border-slate-600 dark:border-slate-400 pb-1" href="#">Home</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Services</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Support</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded">Client Login</button>
+<button class="px-4 py-2 bg-primary text-on-primary text-sm font-semibold rounded shadow-sm hover:opacity-90 transition-opacity">Audit Request</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section: Institutional Authority -->
+<section class="relative bg-surface-container-low pt-24 pb-32 px-8">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="w-full md:w-3/5">
+<div class="inline-block px-3 py-1 mb-6 bg-surface-container-high border-l-4 border-primary">
+<p class="text-xs font-bold tracking-widest text-primary uppercase">Institutional Integrity</p>
+</div>
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[1.1] mb-8">
+                        Protegiendo el legado de su empresa mediante auditorías exhaustivas
+                    </h1>
+<p class="text-on-surface-variant text-lg max-w-xl mb-10 leading-relaxed">
+                        Precision-engineered compliance frameworks for sovereign entities and global enterprises. Our methodology ensures the permanence of your digital and operational records.
+                    </p>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 font-bold rounded-lg shadow-sm hover:brightness-110 transition-all">
+                            Initiate Protocol
+                        </button>
+<button class="bg-surface-container-lowest text-on-surface border border-outline-variant/15 px-8 py-4 font-bold rounded-lg hover:bg-surface-container-high transition-all">
+                            Review Whitepaper
+                        </button>
+</div>
+</div>
+<div class="w-full md:w-2/5">
+<div class="aspect-[4/5] bg-surface-container-lowest shadow-2xl relative overflow-hidden rounded-xl border border-outline-variant/10">
+<img alt="Institutional architecture" class="w-full h-full object-cover mix-blend-overlay opacity-40" data-alt="Monolithic brutalist concrete building facade with clean lines and geometric shadows under a clear grey sky representing institutional stability" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_zNPPw-lu_MAMV5rO1iQIvL9rRc_Fp--iPzVKe4eMt5hj_OBkun4zwCZ_T0YQtsSzmHSWwYdH8iabTMr6DeTHnBj_DwH_aRao6N6m6_hvCO64clKpQGhYGR7CYZ5SOHWl2GMr1KH_ODsXKxma72DewoO97Z7NYXkSoDb16Gf6T6kD7d_yDXrBYQAyX2WPjCPkIdkuDv_rthGyWEhISmlEZK8QQv0dany3c6HY83oy4xma1TuHnwi2P6p_sRmyXVvT0f5bN_VoM5o"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-surface-container-low to-transparent">
+<div class="space-y-4">
+<div class="h-1 w-12 bg-primary"></div>
+<p class="text-sm font-label font-bold tracking-tight text-on-surface">ISO 27001/9001 Certified Infrastructure</p>
+<p class="text-xs text-outline font-medium tracking-wide leading-relaxed">Continuous verification of global systems since 1994. Authorized by the Global Compliance Authority.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Clients Section: Grayscale Placeholder Logos -->
+<section class="py-16 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-8">
+<p class="text-center text-[10px] font-black uppercase tracking-[0.3em] text-outline mb-12">Authorized Stakeholders &amp; Partner Institutions</p>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-12 items-center justify-items-center opacity-60 filter grayscale">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl" data-icon="account_balance">account_balance</span>
+<span class="font-bold tracking-tighter text-xl">FEDERAL RESERVE</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl" data-icon="security">security</span>
+<span class="font-bold tracking-tighter text-xl">CYBERSEC LTD</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl" data-icon="hub">hub</span>
+<span class="font-bold tracking-tighter text-xl">GLOBAL INFRA</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl" data-icon="verified_user">verified_user</span>
+<span class="font-bold tracking-tighter text-xl">NEXUS AUDIT</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl" data-icon="shield">shield</span>
+<span class="font-bold tracking-tighter text-xl">LEGACY TRUST</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Institutional Capabilities -->
+<section class="py-24 px-8 bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface mb-2">Audit Ecosystem</h2>
+<div class="h-1 w-16 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- High Priority Audit Card -->
+<div class="md:col-span-8 bg-surface-container-lowest p-10 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="clinical_notes">clinical_notes</span>
+<h3 class="text-2xl font-bold tracking-tight mb-4 text-on-surface">Systemic Integrity Verification</h3>
+<p class="text-on-surface-variant max-w-xl leading-relaxed mb-8">
+                                Deep-layer analysis of enterprise architectural vulnerabilities. Our auditors execute 4,200 unique validation points per cycle to ensure zero-drift compliance.
+                            </p>
+<div class="flex gap-12 border-t border-outline-variant/10 pt-8">
+<div>
+<p class="text-[10px] uppercase font-bold text-outline tracking-widest mb-1">Frequency</p>
+<p class="text-xl font-bold text-on-surface">Continuous</p>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-outline tracking-widest mb-1">Reliability</p>
+<p class="text-xl font-bold text-on-surface">99.999%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Status Card -->
+<div class="md:col-span-4 bg-surface-container-high p-8 flex flex-col justify-between">
+<div>
+<p class="text-[10px] uppercase font-bold text-primary tracking-widest mb-4">Network Status</p>
+<h3 class="text-xl font-bold tracking-tight mb-2">Sovereign Node Activity</h3>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center bg-surface-container-lowest p-3 rounded">
+<span class="text-sm font-medium">Mainframe Audit</span>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-primary text-on-primary rounded-full">ACTIVE</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-lowest p-3 rounded">
+<span class="text-sm font-medium">Compliance Feed</span>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-primary text-on-primary rounded-full">SECURE</span>
+</div>
+</div>
+</div>
+<!-- Small Bento Items -->
+<div class="md:col-span-4 bg-surface-container-low p-8 border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="history_edu">history_edu</span>
+<h4 class="text-lg font-bold mb-2">Legacy Archival</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Immutable storage protocols for critical institutional data and transactional history.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container-low p-8 border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="policy">policy</span>
+<h4 class="text-lg font-bold mb-2">Policy Alignment</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Real-time mapping of internal governance to international regulatory standards.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container-low p-8 border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="gavel">gavel</span>
+<h4 class="text-lg font-bold mb-2">Legal Admissibility</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Every audit report is structured for immediate forensic and legal presentation.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Informational Section: The Methodology -->
+<section class="py-24 px-8 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-20">
+<div class="md:w-1/3">
+<h2 class="text-4xl font-black tracking-tighter text-on-surface leading-none mb-6">Our Boring Reliability is Your Greatest Asset.</h2>
+<p class="text-outline text-sm font-medium uppercase tracking-tighter mb-8">Statement of Intent v.4.2</p>
+</div>
+<div class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="space-y-4">
+<h5 class="text-sm font-bold text-primary">01. DATA SOVEREIGNTY</h5>
+<p class="text-on-surface-variant text-sm leading-relaxed">We do not store your data on external clouds. Our auditing occurs through secure tunnels into your own air-gapped systems, maintaining absolute custody.</p>
+</div>
+<div class="space-y-4">
+<h5 class="text-sm font-bold text-primary">02. SYSTEMIC PRECISION</h5>
+<p class="text-on-surface-variant text-sm leading-relaxed">Audits are not based on sampling. We utilize brute-force logic validation to confirm that 100% of the ledger entries meet institutional criteria.</p>
+</div>
+<div class="space-y-4">
+<h5 class="text-sm font-bold text-primary">03. REGULATORY FORECAST</h5>
+<p class="text-on-surface-variant text-sm leading-relaxed">Our legal team tracks shifts in the Basel IV and GDPR 2.0 frameworks before they are codified, preparing your systems for future change.</p>
+</div>
+<div class="space-y-4">
+<h5 class="text-sm font-bold text-primary">04. ZERO-FLUFF REPORTING</h5>
+<p class="text-on-surface-variant text-sm leading-relaxed">No charts for the sake of charts. You receive a structured technical document ready for board-level risk committee review.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-[#cfdce3] dark:bg-slate-950 duration-200">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full">
+<div class="mb-6 md:mb-0">
+<div class="text-lg font-black text-slate-900 dark:text-slate-100 mb-2">LegacyGuard Systems</div>
+<p class="text-[10px] tracking-wide uppercase font-semibold text-slate-700 dark:text-slate-300">
+                    © 2024 LegacyGuard Systems. Institutional Authority in System Auditing.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-inter text-xs tracking-wide uppercase font-semibold">
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-opacity" href="#">Security Whitepaper</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-opacity" href="#">Regulatory Compliance</a>
+</div>
+</div>
+<div class="px-12 pb-8 flex justify-center md:justify-start">
+<div class="h-[1px] w-full bg-slate-400/20 mb-4"></div>
+</div>
+</footer>
+</body></html>

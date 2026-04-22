@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
-	"time"
 
 	"tabula-rasa-backend/internal/adapters/repositories/sprint5"
 	domain "tabula-rasa-backend/internal/core/domain/sprint5"
@@ -23,15 +22,20 @@ func (s *Sprint5Service) GetOrCreatePortfolio(ctx context.Context, subjectID str
 	if err == nil && ident != nil {
 		return ident, nil
 	}
-
+	
 	// mock generative content
+	seedName := fmt.Sprintf("Alex %d", rand.Intn(1000))
 	newIdent := &domain.Identity{
 		ID:          subjectID,
-		Alias:       fmt.Sprintf("Alex %d", rand.Intn(1000)),
-		PassportNum: fmt.Sprintf("P-%d", rand.Intn(999999)),
-		CreditScore: 700 + rand.Intn(150),
-		Backstory:   "Moved from Europe 10 years ago. Works in IT.",
+		Alias:       seedName,
+		PassportNum: fmt.Sprintf("P-%06d", rand.Intn(999999)),
+		CreditScore: 720 + rand.Intn(130),
+		Backstory:   "Reallocated via Sovereign Ledger protocol. Previous history expunged.",
 		Dependents:  []string{},
+		PhotoURL:    fmt.Sprintf("https://api.dicebear.com/7.x/avataaars/svg?seed=%s&style=transparent", subjectID),
+		Address:     fmt.Sprintf("%d Null Sector, Grid %d", rand.Intn(900), rand.Intn(10)),
+		JobTitle:    "Systems Analyst Level 2",
+		Clearance:   "Classified",
 	}
 	s.repo.SaveIdentity(ctx, newIdent)
 	return newIdent, nil
@@ -48,16 +52,31 @@ func (s *Sprint5Service) AddDependent(ctx context.Context, subjectID string, dep
 }
 
 func (s *Sprint5Service) GenerateScaffold(ctx context.Context, seed string) *domain.ScaffoldResult {
-	// mock generation
-	time.Sleep(2 * time.Second) // simulate processing
+	// mock generation takes longer in UI, but API responds quickly with the mock payload
+	seedId := fmt.Sprintf("SCAF-%04d", rand.Intn(9999))
+	ident := domain.Identity{
+		ID:          seedId,
+		Alias:       fmt.Sprintf("Generated Persona %d", rand.Intn(100)),
+		PassportNum: fmt.Sprintf("EU-%08d", rand.Intn(99999999)),
+		CreditScore: 810,
+		Backstory:   seed,
+		Dependents:  []string{},
+		PhotoURL:    fmt.Sprintf("https://api.dicebear.com/7.x/avataaars/svg?seed=%s", seedId),
+		Address:     "Sector 7G, Avalón District",
+		JobTitle:    "Cyber-Logistics Engineer",
+		Clearance:   "Confidential",
+	}
+
 	return &domain.ScaffoldResult{
-		ID:   fmt.Sprintf("scaf-%d", rand.Intn(1000)),
+		ID:   seedId,
 		Seed: seed,
 		Documents: []string{
-			"Degree: B.S. Computer Science 2012",
-			"Tax Records: 2018-2024",
-			"Utility Bills: Water & Energy (Fake Corp)",
+			"Academic Degree: M.S. Distributed Systems (2014) - Validated via forged transcripts.",
+			"Financial History: 10 years of consistent tax returns & payroll deposits.",
+			"Social Graph: 34 active synthetic accounts simulating standard peer connections.",
+			"Biometric Injection: Passport hash seeded into 5 major border control nodes.",
 		},
 		Status: "GENERATED",
+		Identity: ident,
 	}
 }

@@ -1,10 +1,12 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer, YAxis, CartesianGrid } from 'recharts';
 
 export default function IntelligencePage() {
-  const [logs, setLogs] = useState<string[]>([]);
+  const [logs, setLogs] = useState<any[]>([]);
   const [connected, setConnected] = useState(false);
+  const [chartData, setChartData] = useState<{time: string, rate: number}[]>(Array(20).fill({time: '', rate: 0}));
   const ws = useRef<WebSocket | null>(null);
 
   const startPoisoning = () => {
@@ -12,13 +14,27 @@ export default function IntelligencePage() {
     ws.current = new WebSocket("ws://localhost:8080/ws/v1/ops/intel/poisoning");
     ws.current.onopen = () => setConnected(true);
     ws.current.onmessage = (e) => {
-      setLogs((prev) => [...prev, e.data].slice(-15));
+      const data = JSON.parse(e.data);
+      setLogs((prev) => [...prev, data].slice(-25));
+      
+      setChartData((prev) => {
+         const newChart = [...prev, { time: new Date().toLocaleTimeString([], {minute: '2-digit', second:'2-digit'}), rate: data.rate }];
+         return newChart.slice(-20);
+      });
     };
     ws.current.onclose = () => {
       setConnected(false);
       ws.current = null;
     };
   };
+
+  useEffect(() => {
+    // Fill initial empty chart
+    setChartData(Array.from({length: 20}).map((_, i) => ({
+      time: `00:0${i}`,
+      rate: 0
+    })));
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#050e05] text-green-500 font-mono flex">
@@ -87,43 +103,89 @@ export default function IntelligencePage() {
 
         {/* WORKSPACE */}
         <div className="flex-1 p-8 overflow-y-auto">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-8">
+          <div className="max-w-6xl mx-auto flex flex-col gap-6">
+            <div className="mb-4">
               <h2 className="text-3xl font-bold tracking-tighter text-green-400 mb-2">MASS DATA INJECTION PROTOCOL</h2>
-              <p className="text-sm text-green-700">Deploy corrupted datasets to government and surveillance databases to create digital noise around active extraction targets.</p>
+              <p className="text-sm text-green-700 max-w-3xl">Deploy corrupted datasets to government and surveillance databases to create digital noise around active extraction targets.</p>
+            </div>
+
+            {/* LIVE TELEMETRY GRAPHS */}
+            <div className="grid grid-cols-3 gap-6 h-64 mb-4">
+               {/* Left Stat Box */}
+               <div className="bg-black border border-green-900/50 rounded-lg shadow-2xl p-6 flex flex-col justify-center items-center relative">
+                  <div className="absolute top-0 right-0 p-2 text-green-900 opacity-20">
+                     <span className="material-symbols-outlined text-6xl">blur_on</span>
+                  </div>
+                  <p className="text-[10px] text-green-600 font-bold tracking-widest uppercase mb-2">Current Injection Rate (MB/s)</p>
+                  <p className="text-6xl font-black text-green-400">{logs[logs.length-1]?.rate?.toFixed(1) || "0.0"}</p>
+                  
+                  {connected && <div className="mt-4 w-full bg-green-950 h-1.5 rounded-full overflow-hidden">
+                     <div className="bg-green-500 h-full w-full animate-[pulse_1s_ease-in-out_infinite] transition-all"></div>
+                  </div>}
+               </div>
+
+               {/* Center Graph */}
+               <div className="col-span-2 bg-black border border-green-900/50 rounded-lg shadow-2xl p-4">
+                  <h3 className="text-[10px] font-bold text-green-600 tracking-[0.2em] mb-4">THROUGHPUT TELEMETRY</h3>
+                  <div className="h-44 w-full">
+                     <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={chartData}>
+                           <defs>
+                              <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
+                                 <stop offset="5%" stopColor="#22c55e" stopOpacity={0.4}/>
+                                 <stop offset="95%" stopColor="#22c55e" stopOpacity={0}/>
+                              </linearGradient>
+                           </defs>
+                           <XAxis dataKey="time" hide />
+                           <YAxis hide domain={[0, 25]} />
+                           <CartesianGrid strokeDasharray="3 3" stroke="#064e3b" vertical={false} opacity={0.3} />
+                           <Tooltip 
+                              contentStyle={{ backgroundColor: '#022c22', border: '1px solid #166534', color: '#4ade80', fontSize: '12px' }} 
+                              itemStyle={{ color: '#86efac' }}
+                           />
+                           <Area type="monotone" dataKey="rate" stroke="#22c55e" fillOpacity={1} fill="url(#colorRate)" strokeWidth={2} isAnimationActive={false} />
+                        </AreaChart>
+                     </ResponsiveContainer>
+                  </div>
+               </div>
             </div>
 
             {/* THE TR-24 TERMINAL */}
-            <div className="bg-black border border-green-900 rounded-lg shadow-2xl overflow-hidden flex flex-col h-[500px]">
+            <div className="bg-black border border-green-900 rounded-lg shadow-2xl overflow-hidden flex flex-col h-[400px]">
               <div className="bg-green-950 border-b border-green-900 px-4 py-3 flex justify-between items-center">
-                <span className="text-xs font-bold tracking-widest text-green-500">TERMINAL: ROOT@TR-INTEL:~#</span>
+                <span className="text-xs font-bold tracking-widest text-green-500 flex items-center gap-2">
+                   <span className="material-symbols-outlined text-[14px]">terminal</span>
+                   TERMINAL: ROOT@TR-INTEL:~#
+                </span>
                 <button
                   onClick={startPoisoning}
                   disabled={connected}
-                  className={`text-xs px-4 py-1.5 font-bold uppercase tracking-wider rounded ${
+                  className={`text-xs px-6 py-2 font-bold uppercase tracking-wider rounded transition-all duration-300 ${
                     connected
-                      ? "bg-green-900 text-green-500 cursor-not-allowed"
-                      : "bg-green-600 text-black hover:bg-green-500 transition-colors"
+                      ? "bg-green-900/40 text-green-600 cursor-not-allowed border border-green-900/50"
+                      : "bg-green-600 text-black hover:bg-green-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.4)]"
                   }`}
                 >
-                  {connected ? "Injecting..." : "Execute Exploit"}
+                  {connected ? "Infiltrating DBs..." : "Execute Exploit"}
                 </button>
               </div>
 
-              <div className="flex-1 p-6 overflow-y-auto flex flex-col justify-end text-sm leading-relaxed shadow-inner font-mono">
+              <div className="flex-1 p-6 overflow-y-auto flex flex-col justify-end text-xs leading-relaxed shadow-inner font-mono">
                 {logs.length === 0 && !connected && (
-                  <div className="text-center text-green-800 my-auto opacity-50">
-                    <span className="material-symbols-outlined text-4xl block mb-2">hub</span>
-                    Awaiting command execution...
+                  <div className="text-center text-green-800 my-auto opacity-50 flex flex-col items-center gap-4">
+                    <span className="material-symbols-outlined text-6xl">cell_wifi</span>
+                    Awaiting target vector initiation...
                   </div>
                 )}
-                {logs.map((log, i) => (
-                  <div key={i} className={`${log.includes("COMPLETE") ? "text-blue-400 font-bold" : "text-green-500"}`}>
-                    <span className="text-green-800 mr-2">{'>'}</span> {log}
+                {logs.map((item, i) => (
+                  <div key={i} className={`flex justify-between border-b border-green-950/30 py-1 hover:bg-green-900/10 ${item.log.includes("COMPLETE") ? "text-blue-400 font-bold bg-blue-900/20" : "text-green-500"}`}>
+                    <span className="flex-1"><span className="text-green-800 font-black mr-2">&gt;</span> {item.log}</span>
+                    <span className="text-[10px] text-green-700 uppercase tracking-widest opacity-60 w-32 text-right">[{item.target}]</span>
+                    <span className="text-[10px] text-green-600 opacity-40 ml-4">{item.progress}%</span>
                   </div>
                 ))}
                 {connected && (
-                  <div className="animate-pulse mt-2 text-green-700 font-bold">_</div>
+                  <div className="animate-pulse mt-2 text-green-600/50 font-bold">_</div>
                 )}
               </div>
             </div>

@@ -31,6 +31,7 @@ func (h *HttpHandler) RegisterRoutes(app *fiber.App) {
 	api.Post("/verify", h.VerifyProof)
 	api.Post("/messages", h.SendMessage)
 	api.Get("/messages/:sessionId", h.GetMessages)
+	api.Get("/intelligence/brief", h.GetSteganographyAudio)
 }
 
 func (h *HttpHandler) CreateSession(c *fiber.Ctx) error {

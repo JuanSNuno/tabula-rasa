@@ -45,3 +45,6 @@ dist/
 
 # macOS
 .DS_Store
+
+# Terminal Agent
+.opencode

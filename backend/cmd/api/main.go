@@ -13,8 +13,11 @@ import (
 	"github.com/redis/go-redis/v9"
 
 	"tabula-rasa-backend/internal/adapters/handlers"
+	s5h "tabula-rasa-backend/internal/adapters/handlers/sprint5"
 	"tabula-rasa-backend/internal/adapters/repositories"
+	s5r "tabula-rasa-backend/internal/adapters/repositories/sprint5"
 	"tabula-rasa-backend/internal/core/services"
+	s5s "tabula-rasa-backend/internal/core/services/sprint5"
 )
 
 func main() {
@@ -54,6 +57,12 @@ func main() {
 	// Montar rutas
 	httpHandler := handlers.NewHttpHandler(createSessionUC, verifyProofUC, routeMessageUC)
 	httpHandler.RegisterRoutes(app)
+
+	// Montar rutas Sprint 5
+	s5repo := s5r.NewRedisSprint5Repo(redisClient)
+	s5service := s5s.NewSprint5Service(s5repo)
+	s5handler := s5h.NewSprint5Handler(s5service)
+	s5handler.RegisterRoutes(app)
 
 	// 5. Arranque y Graceful Shutdown
 	go func() {

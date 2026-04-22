@@ -180,6 +180,10 @@ export default function PortalDashboard() {
               <span className="material-symbols-outlined text-sm">grid_view</span>
               DASHBOARD
             </a>
+            <a className="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-container hover:text-primary duration-75 ease-in" href="/dashboard/portfolio">
+              <span className="material-symbols-outlined text-sm">badge</span>
+              PORTFOLIO_ID
+            </a>
             <a className="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-container hover:text-primary duration-75 ease-in" href="#">
               <span className="material-symbols-outlined text-sm">qr_code_2</span>
               CRYPTO_VAL

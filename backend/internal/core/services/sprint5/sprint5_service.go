@@ -31,7 +31,7 @@ func (s *Sprint5Service) GetOrCreatePortfolio(ctx context.Context, subjectID str
 		PassportNum: fmt.Sprintf("P-%06d", rand.Intn(999999)),
 		CreditScore: 720 + rand.Intn(130),
 		Backstory:   "Reallocated via Sovereign Ledger protocol. Previous history expunged.",
-		Dependents:  []string{},
+		Dependents:  []domain.Dependent{},
 		PhotoURL:    fmt.Sprintf("https://api.dicebear.com/7.x/avataaars/svg?seed=%s&style=transparent", subjectID),
 		Address:     fmt.Sprintf("%d Null Sector, Grid %d", rand.Intn(900), rand.Intn(10)),
 		JobTitle:    "Systems Analyst Level 2",
@@ -41,12 +41,15 @@ func (s *Sprint5Service) GetOrCreatePortfolio(ctx context.Context, subjectID str
 	return newIdent, nil
 }
 
-func (s *Sprint5Service) AddDependent(ctx context.Context, subjectID string, depName string) (*domain.Identity, error) {
+func (s *Sprint5Service) AddDependent(ctx context.Context, subjectID string, dep domain.Dependent) (*domain.Identity, error) {
 	ident, err := s.GetOrCreatePortfolio(ctx, subjectID)
 	if err != nil {
 		return nil, err
 	}
-	ident.Dependents = append(ident.Dependents, depName)
+	dep.ID = fmt.Sprintf("DEP-%05d", rand.Intn(99999))
+	dep.Status = "PENDING_EVALUATION"
+	dep.Clearance = "L0-RESTRICTED"
+	ident.Dependents = append(ident.Dependents, dep)
 	s.repo.SaveIdentity(ctx, ident)
 	return ident, nil
 }
@@ -60,7 +63,7 @@ func (s *Sprint5Service) GenerateScaffold(ctx context.Context, seed string) *dom
 		PassportNum: fmt.Sprintf("EU-%08d", rand.Intn(99999999)),
 		CreditScore: 810,
 		Backstory:   seed,
-		Dependents:  []string{},
+		Dependents:  []domain.Dependent{},
 		PhotoURL:    fmt.Sprintf("https://api.dicebear.com/7.x/avataaars/svg?seed=%s", seedId),
 		Address:     "Sector 7G, Avalón District",
 		JobTitle:    "Cyber-Logistics Engineer",

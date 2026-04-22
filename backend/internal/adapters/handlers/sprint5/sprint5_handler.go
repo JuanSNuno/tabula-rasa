@@ -8,6 +8,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
+	domain "tabula-rasa-backend/internal/core/domain/sprint5"
 	"tabula-rasa-backend/internal/core/services/sprint5"
 )
 
@@ -41,13 +42,11 @@ func (h *Sprint5Handler) RegisterRoutes(app *fiber.App) {
 
 	api.Post("/identities/:id/dependents", func(c *fiber.Ctx) error {
 		id := c.Params("id")
-		var req struct {
-			Name string `json:"name"`
-		}
+		var req domain.Dependent
 		if err := c.BodyParser(&req); err != nil {
 			return c.Status(400).JSON(fiber.Map{"err": "Invalid Body"})
 		}
-		res, _ := h.srv.AddDependent(c.Context(), id, req.Name)
+		res, _ := h.srv.AddDependent(c.Context(), id, req)
 		return c.JSON(res)
 	})
 

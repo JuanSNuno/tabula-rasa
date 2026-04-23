@@ -34,7 +34,7 @@ func (s *Sprint5Service) GetOrCreatePortfolio(ctx context.Context, subjectID str
 		Dependents:  []domain.Dependent{},
 		PhotoURL:    fmt.Sprintf("https://api.dicebear.com/7.x/avataaars/svg?seed=%s&style=transparent", subjectID),
 		Address:     fmt.Sprintf("%d Null Sector, Grid %d", rand.Intn(900), rand.Intn(10)),
-		JobTitle:    "Systems Analyst Level 2",
+		JobTitle:    "j",
 		Clearance:   "Classified",
 	}
 	s.repo.SaveIdentity(ctx, newIdent)

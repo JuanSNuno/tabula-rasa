@@ -146,3 +146,12 @@ body {
   width: 100%;
   z-index: 10;
 }
+
+/* Anti-rastro: el texto del stream de chat no es seleccionable.
+   Evita que el contenido de la sesión efímera se copie al portapapeles del SO. */
+.no-select-log {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

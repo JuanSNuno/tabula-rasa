@@ -42,7 +42,7 @@ export default function IntelligencePage() {
       <aside className="w-72 border-r border-green-900 flex flex-col bg-[#020602]">
         <div className="p-6 border-b border-green-900">
           <h1 className="text-xl font-bold tracking-widest text-green-400 mb-2">TABULA_RASA</h1>
-          <p className="text-xs uppercase tracking-widest text-green-800">SIGINT / Network Intel</p>
+          <p className="text-xs uppercase tracking-widest text-green-800">SIGINT / Inteligencia de Red</p>
         </div>
         
         <div className="p-6 border-b border-green-900 flex flex-col gap-4">
@@ -51,13 +51,13 @@ export default function IntelligencePage() {
               <span className="material-symbols-outlined text-green-400">person_search</span>
             </div>
             <div>
-              <p className="font-bold text-sm">OPERATOR: CYPHER</p>
-              <p className="text-xs text-green-700">AUTH LVL: 5 (ALPHA)</p>
+              <p className="font-bold text-sm">OPERADOR: CYPHER</p>
+              <p className="text-xs text-green-700">LVL AUTH: 5 (ALPHA)</p>
             </div>
           </div>
           <div className="text-xs space-y-1 text-green-600">
-            <p className="flex justify-between"><span>NODE:</span> <span className="text-green-400">PXR-77</span></p>
-            <p className="flex justify-between"><span>LOCATION:</span> <span className="text-green-400">Unknown (Tor)</span></p>
+            <p className="flex justify-between"><span>NODO:</span> <span className="text-green-400">PXR-77</span></p>
+            <p className="flex justify-between"><span>UBICACIÓN:</span> <span className="text-green-400">Desconocida (Tor)</span></p>
             <p className="flex justify-between"><span>GEO-IP:</span> <span className="text-green-400">194.150.xxx.xx</span></p>
           </div>
         </div>
@@ -65,23 +65,23 @@ export default function IntelligencePage() {
         {/* NOTIFICATIONS */}
         <div className="p-6 border-b border-green-900 flex-1">
           <h2 className="text-xs font-bold uppercase tracking-widest mb-4 flex items-center justify-between">
-            Pending Alerts <span className="bg-green-800 text-black px-2 py-0.5 rounded-sm">2</span>
+            Alertas Pendientes <span className="bg-green-800 text-black px-2 py-0.5 rounded-sm">2</span>
           </h2>
           <div className="space-y-3">
             <div className="bg-green-950/30 border-l-2 border-green-500 p-3 text-xs text-green-400">
-              <p className="font-bold mb-1">[URGENT] Interpol DB Sync</p>
-              <p className="text-green-700">Anomaly detected in target profile 802A. Immediate poisoning required.</p>
+              <p className="font-bold mb-1">[URGENTE] Sincronización BD Interpol</p>
+              <p className="text-green-700">Anomalía detectada en perfil objetivo 802A. Se requiere envenenamiento inmediato.</p>
             </div>
             <div className="bg-green-950/30 border-l-2 border-green-800 p-3 text-xs text-green-600">
-              <p className="font-bold mb-1">[INFO] Social Graph Scrape</p>
-              <p className="text-green-800">Scraping complete for 3 associates of TR-14.</p>
+              <p className="font-bold mb-1">[INFO] Extracción Grafo Social</p>
+              <p className="text-green-800">Extracción completa para 3 asociados de TR-14.</p>
             </div>
           </div>
         </div>
 
         <div className="p-6">
           <Link href="/" className="text-xs uppercase tracking-widest text-green-800 hover:text-green-400 transition-colors flex items-center gap-2">
-            <span className="material-symbols-outlined text-sm">logout</span> Terminate Session
+            <span className="material-symbols-outlined text-sm">logout</span> Terminar Sesión
           </Link>
         </div>
       </aside>
@@ -91,13 +91,13 @@ export default function IntelligencePage() {
         {/* TOPBAR */}
         <header className="h-16 border-b border-green-900 flex items-center justify-between px-8 bg-[#020602]/80 backdrop-blur-sm">
           <div className="flex space-x-8 text-xs uppercase tracking-widest font-bold">
-            <span className="text-green-400 border-b-2 border-green-400 pb-1 cursor-pointer">Data Poisoning (TR-24)</span>
-            <span className="text-green-800 hover:text-green-600 cursor-not-allowed">Social Eng. Analyzer</span>
-            <span className="text-green-800 hover:text-green-600 cursor-not-allowed">Dog Whistling Copys (TR-14)</span>
+            <span className="text-green-400 border-b-2 border-green-400 pb-1 cursor-pointer">Envenenamiento de Datos (TR-24)</span>
+            <span className="text-green-800 hover:text-green-600 cursor-not-allowed">Analizador Ing. Social</span>
+            <span className="text-green-800 hover:text-green-600 cursor-not-allowed">Copias Dog Whistling (TR-14)</span>
           </div>
           <div className="flex items-center gap-2">
              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-             <span className="text-xs text-green-600">System Online</span>
+             <span className="text-xs text-green-600">Sistema en Línea</span>
           </div>
         </header>
 
@@ -105,8 +105,8 @@ export default function IntelligencePage() {
         <div className="flex-1 p-8 overflow-y-auto">
           <div className="max-w-6xl mx-auto flex flex-col gap-6">
             <div className="mb-4">
-              <h2 className="text-3xl font-bold tracking-tighter text-green-400 mb-2">MASS DATA INJECTION PROTOCOL</h2>
-              <p className="text-sm text-green-700 max-w-3xl">Deploy corrupted datasets to government and surveillance databases to create digital noise around active extraction targets.</p>
+              <h2 className="text-3xl font-bold tracking-tighter text-green-400 mb-2">PROTOCOLO DE INYECCIÓN MASIVA DE DATOS</h2>
+              <p className="text-sm text-green-700 max-w-3xl">Despliegue conjuntos de datos corruptos en bases de datos gubernamentales y de vigilancia para crear ruido digital alrededor de objetivos de extracción activos.</p>
             </div>
 
             {/* LIVE TELEMETRY GRAPHS */}
@@ -116,7 +116,7 @@ export default function IntelligencePage() {
                   <div className="absolute top-0 right-0 p-2 text-green-900 opacity-20">
                      <span className="material-symbols-outlined text-6xl">blur_on</span>
                   </div>
-                  <p className="text-[10px] text-green-600 font-bold tracking-widest uppercase mb-2">Current Injection Rate (MB/s)</p>
+                  <p className="text-[10px] text-green-600 font-bold tracking-widest uppercase mb-2">Tasa de Inyección Actual (MB/s)</p>
                   <p className="text-6xl font-black text-green-400">{logs[logs.length-1]?.rate?.toFixed(1) || "0.0"}</p>
                   
                   {connected && <div className="mt-4 w-full bg-green-950 h-1.5 rounded-full overflow-hidden">
@@ -126,7 +126,7 @@ export default function IntelligencePage() {
 
                {/* Center Graph */}
                <div className="col-span-2 bg-black border border-green-900/50 rounded-lg shadow-2xl p-4">
-                  <h3 className="text-[10px] font-bold text-green-600 tracking-[0.2em] mb-4">THROUGHPUT TELEMETRY</h3>
+                  <h3 className="text-[10px] font-bold text-green-600 tracking-[0.2em] mb-4">TELEMETRÍA DE RENDIMIENTO</h3>
                   <div className="h-44 w-full">
                      <ResponsiveContainer width="100%" height="100%">
                         <AreaChart data={chartData}>
@@ -166,7 +166,7 @@ export default function IntelligencePage() {
                       : "bg-green-600 text-black hover:bg-green-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.4)]"
                   }`}
                 >
-                  {connected ? "Infiltrating DBs..." : "Execute Exploit"}
+                  {connected ? "Infiltrando BDs..." : "Ejecutar Exploit"}
                 </button>
               </div>
 
@@ -174,7 +174,7 @@ export default function IntelligencePage() {
                 {logs.length === 0 && !connected && (
                   <div className="text-center text-green-800 my-auto opacity-50 flex flex-col items-center gap-4">
                     <span className="material-symbols-outlined text-6xl">cell_wifi</span>
-                    Awaiting target vector initiation...
+                    Esperando inicio de vector objetivo...
                   </div>
                 )}
                 {logs.map((item, i) => (

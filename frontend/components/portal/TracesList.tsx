@@ -12,15 +12,33 @@ interface Trace {
 }
 
 const traces: Trace[] = [
-    { id: 'TR-001', source: 'Civil Registry (Interpol Dragnet)', category: 'Government', status: 'Detected', riskLevel: 'Critical', details: 'Record found in Interpol Centralized Repository. Linked to passport [REDACTED]. Last sync: 4h ago.' },
-    { id: 'TR-002', source: 'SWIFT Transaction Logs (Flagged)', category: 'Financial', status: 'Detected', riskLevel: 'High', details: 'Transaction 0x992B flagged for manual review at [LOCAL BANK]. Source: Foreign wire transfer.' },
-    { id: 'TR-003', source: 'Facial Recognition Database (Public Safety)', category: 'Biometric', status: 'Neutralizing', riskLevel: 'Critical', details: 'Biometric vector detected in 420 surveillance cameras. Entropy injection ongoing.' },
-    { id: 'TR-004', source: 'Social Integrity Score (Metadata)', category: 'Digital', status: 'Detected', riskLevel: 'Medium', details: 'Shadow profile generated based on geolocation habits. Score: 0.12 [UNRELIABLE].' },
-    { id: 'TR-005', source: 'Digital Identity (Frankenstein Shadow)', category: 'Digital', status: 'Neutralizing', riskLevel: 'High', details: 'Synthetic identity merging with origin. Collision probability: < 0.05%.' },
+    { id: 'TR-001', source: 'Registro Civil (Red Interpol)', category: 'Government', status: 'Detected', riskLevel: 'Critical', details: 'Registro encontrado en Repositorio Centralizado de Interpol. Vinculado al pasaporte [CENSURADO]. Última sincronización: hace 4h.' },
+    { id: 'TR-002', source: 'Registros de Transacciones SWIFT (Marcado)', category: 'Financial', status: 'Detected', riskLevel: 'High', details: 'Transacción 0x992B marcada para revisión manual en [BANCO LOCAL]. Origen: Transferencia bancaria extranjera.' },
+    { id: 'TR-003', source: 'Base de Datos de Reconocimiento Facial (Seguridad Pública)', category: 'Biometric', status: 'Neutralizing', riskLevel: 'Critical', details: 'Vector biométrico detectado en 420 cámaras de vigilancia. Inyección de entropía en curso.' },
+    { id: 'TR-004', source: 'Puntaje de Integridad Social (Metadatos)', category: 'Digital', status: 'Detected', riskLevel: 'Medium', details: 'Perfil en la sombra generado basado en hábitos de geolocalización. Puntaje: 0.12 [POCO CONFIABLE].' },
+    { id: 'TR-005', source: 'Identidad Digital (Sombra Frankenstein)', category: 'Digital', status: 'Neutralizing', riskLevel: 'High', details: 'Identidad sintética fusionándose con el origen. Probabilidad de colisión: < 0.05%.' },
 ];
 
 export default function TracesList() {
     const [selectedTrace, setSelectedTrace] = useState<Trace | null>(null);
+
+    // Localización de etiquetas
+    const riskLoc = {
+        'Critical': 'Crítico',
+        'High': 'Alto',
+        'Medium': 'Medio'
+    };
+    const statusLoc = {
+        'Detected': 'Detectado',
+        'Neutralizing': 'Neutralizando',
+        'Eliminated': 'Eliminado'
+    };
+    const categoryLoc = {
+        'Government': 'Gubernamental',
+        'Financial': 'Financiero',
+        'Digital': 'Digital',
+        'Biometric': 'Biométrico'
+    };
 
     if (selectedTrace) {
         return (
@@ -30,23 +48,23 @@ export default function TracesList() {
                     className="flex items-center gap-2 text-[10px] font-bold text-primary uppercase hover:bg-primary/10 w-fit p-2 border border-primary/20 transition-all active:scale-95"
                 >
                     <span className="material-symbols-outlined text-sm">arrow_back</span>
-                    RETURN TO TRACE LIST
+                    VOLVER A LA LISTA DE RASTROS
                 </button>
 
                 <div className="bg-surface-container-high/60 border border-primary/20 p-6 space-y-6">
                     <div className="flex justify-between items-start border-b border-outline-variant/10 pb-4">
                         <div className="space-y-1">
-                            <span className="text-[10px] text-primary font-bold uppercase tracking-widest">{selectedTrace.id} // {selectedTrace.category}</span>
+                            <span className="text-[10px] text-primary font-bold uppercase tracking-widest">{selectedTrace.id} // {categoryLoc[selectedTrace.category]}</span>
                             <h3 className="text-xl font-black text-on-surface uppercase tracking-tighter">{selectedTrace.source}</h3>
                         </div>
-                        <span className="px-3 py-1 bg-error-container text-on-error-container text-[9px] font-black uppercase">RISK_LEVEL: {selectedTrace.riskLevel}</span>
+                        <span className="px-3 py-1 bg-error-container text-on-error-container text-[9px] font-black uppercase">NIVEL_DE_RIESGO: {riskLoc[selectedTrace.riskLevel]}</span>
                     </div>
 
                     <div className="space-y-6">
                         <div className="p-4 bg-black/40 border-l-4 border-primary">
                             <div className="text-[10px] text-primary font-bold uppercase mb-3 flex items-center gap-2">
                                 <span className="material-symbols-outlined text-xs">folder_open</span>
-                                RAW_DATA_LEAK_REPORT:
+                                REPORTE_DE_FUGA_DE_DATOS_CRUDOS:
                             </div>
                             <p className="text-xs text-on-surface-variant leading-relaxed font-mono italic">
                                 "{selectedTrace.details}"
@@ -55,18 +73,18 @@ export default function TracesList() {
 
                         <div className="grid grid-cols-2 gap-6 p-4 bg-surface-container-lowest/30 rounded-sm">
                             <div className="space-y-2 border-r border-outline-variant/10">
-                                <div className="text-[10px] text-on-surface-variant font-bold uppercase">Persistence Matrix:</div>
-                                <div className="text-sm text-primary font-black tracking-widest">HIGH [REPLICATED]</div>
+                                <div className="text-[10px] text-on-surface-variant font-bold uppercase">Matriz de Persistencia:</div>
+                                <div className="text-sm text-primary font-black tracking-widest">ALTA [REPLICADO]</div>
                             </div>
                             <div className="space-y-2 pl-4">
-                                <div className="text-[10px] text-on-surface-variant font-bold uppercase">Estimated Purge Time:</div>
+                                <div className="text-[10px] text-on-surface-variant font-bold uppercase">Tiempo Estimado de Purga:</div>
                                 <div className="text-sm text-primary font-black tracking-widest">12m 45s</div>
                             </div>
                         </div>
                     </div>
 
                     <button className="w-full bg-primary text-on-primary-container font-black py-4 uppercase text-xs hover:bg-tertiary transition-colors shadow-lg active:scale-[0.98] duration-150">
-                        CONFIRM TOTAL NEUTRALIZATION
+                        CONFIRMAR NEUTRALIZACIÓN TOTAL
                     </button>
                 </div>
             </div>
@@ -76,8 +94,8 @@ export default function TracesList() {
     return (
         <div className="w-full flex flex-col gap-4">
             <div className="flex justify-between items-end border-b border-outline-variant/30 pb-2">
-                <h2 className="text-xs font-bold text-on-surface-variant tracking-[0.2em] uppercase">Digital Footprint Destruction</h2>
-                <span className="text-[10px] text-primary uppercase">Active OSINT Scan</span>
+                <h2 className="text-xs font-bold text-on-surface-variant tracking-[0.2em] uppercase">Destrucción de Huella Digital</h2>
+                <span className="text-[10px] text-primary uppercase">Escaneo OSINT Activo</span>
             </div>
 
             <div className="space-y-3">
@@ -89,14 +107,14 @@ export default function TracesList() {
                     >
                         <div className="flex justify-between items-start">
                             <div className="flex flex-col">
-                                <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">{trace.id} // {trace.category}</span>
+                                <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">{trace.id} // {categoryLoc[trace.category]}</span>
                                 <span className="text-sm font-bold text-on-surface mt-1 font-headline tracking-tighter">{trace.source}</span>
                             </div>
                             <span className={`text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase ${trace.riskLevel === 'Critical' ? 'bg-error-container text-on-error-container' :
                                     trace.riskLevel === 'High' ? 'bg-tertiary-container text-on-tertiary-container' :
                                         'bg-surface-container-highest text-on-surface-variant'
                                 }`}>
-                                RISK: {trace.riskLevel}
+                                RIESGO: {riskLoc[trace.riskLevel]}
                             </span>
                         </div>
 
@@ -106,10 +124,10 @@ export default function TracesList() {
                                         trace.status === 'Neutralizing' ? 'bg-tertiary animate-pulse' :
                                             'bg-outline-variant'
                                     }`}></div>
-                                <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">{trace.status}</span>
+                                <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">{statusLoc[trace.status]}</span>
                             </div>
                             <div className="flex items-center gap-1 text-[10px] font-bold text-primary group-hover:underline uppercase tracking-tight">
-                                VIEW DATA REPORT [OSINT]
+                                VER REPORTE DE DATOS [OSINT]
                                 <span className="material-symbols-outlined text-xs">arrow_forward</span>
                             </div>
                         </div>

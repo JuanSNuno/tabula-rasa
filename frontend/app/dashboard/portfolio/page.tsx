@@ -43,7 +43,7 @@ export default function PortfolioPage() {
   if (!data) return (
      <div className="min-h-screen bg-[#050505] flex items-center justify-center font-mono text-tertiary">
         <span className="animate-pulse tracking-[0.3em] flex items-center gap-4">
-           <Activity className="animate-spin"/> DECRYPTING LEDGER...
+           <Activity className="animate-spin"/> DESCIFRANDO LIBRO MAYOR...
         </span>
      </div>
   );
@@ -55,8 +55,8 @@ export default function PortfolioPage() {
          <div className="flex items-center gap-3 border-b border-primary/30 pb-4 mb-2">
             <ShieldAlert className="text-primary w-8 h-8" />
             <div>
-               <h1 className="text-xl font-bold tracking-[0.2em] text-primary uppercase">Legacy_Asset</h1>
-               <p className="text-[10px] text-gray-500 tracking-widest uppercase">Primary Subject Portfolio</p>
+               <h1 className="text-xl font-bold tracking-[0.2em] text-primary uppercase">Activo_Heredado</h1>
+               <p className="text-[10px] text-gray-500 tracking-widest uppercase">Portafolio del Sujeto Principal</p>
             </div>
          </div>
 
@@ -71,16 +71,16 @@ export default function PortfolioPage() {
                      <div className="absolute inset-0 bg-primary/10 mix-blend-screen z-10"></div>
                      <img src={data.photoUrl} alt="Avatar" className="w-full h-full object-cover filter contrast-125" />
                      <div className="absolute bottom-0 w-full bg-primary/80 text-[8px] font-bold text-black text-center py-0.5 tracking-widest uppercase backdrop-blur-md z-20">
-                        Validated
+                        Validado
                      </div>
                   </div>
                   <div className="flex flex-col justify-center space-y-3">
                      <div>
-                        <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Legal Name (Alias)</p>
+                        <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Nombre Legal (Alias)</p>
                         <p className="text-lg font-black text-white tracking-tight leading-tight">{data.alias}</p>
                      </div>
                      <div>
-                        <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Passport / ID</p>
+                        <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Pasaporte / ID</p>
                         <p className="text-xs font-mono text-gray-300 bg-black/40 px-2 py-0.5 inline-block rounded">{data.passportNum}</p>
                      </div>
                   </div>
@@ -88,18 +88,18 @@ export default function PortfolioPage() {
                
                <div className="grid grid-cols-2 gap-3 pt-4 border-t border-primary/10">
                   <div>
-                     <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Clearance Level</p>
+                     <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Nivel de Autorización</p>
                      <p className="text-xs font-mono text-tertiary uppercase">{data.clearance}</p>
                   </div>
                   <div>
-                     <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Status</p>
-                     <p className="text-xs font-mono text-green-500 uppercase flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> SECURED</p>
+                     <p className="text-[9px] uppercase text-primary/70 font-bold tracking-widest">Estado</p>
+                     <p className="text-xs font-mono text-green-500 uppercase flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> ASEGURADO</p>
                   </div>
                </div>
             </div>
             
             <div className="bg-black/60 px-6 py-3 border-t border-primary/10 flex justify-between items-center">
-               <div className="text-[10px] text-gray-500 uppercase tracking-widest">Issue Date: {new Date().toLocaleDateString()}</div>
+               <div className="text-[10px] text-gray-500 uppercase tracking-widest">Fecha de Emisión: {new Date().toLocaleDateString()}</div>
                <div className="h-6 w-20 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/e9/UPC-A-036000291452.svg')] bg-cover bg-center filter invert opacity-50 mix-blend-lighten"></div>
             </div>
          </div>
@@ -109,21 +109,21 @@ export default function PortfolioPage() {
             <div className="bg-surface-container-low p-4 border-l-2 border-primary/50 flex gap-4 items-center">
                <User className="text-primary/50 w-5 h-5" />
                <div>
-                  <p className="text-[9px] uppercase text-gray-500 font-bold tracking-widest">Occupation Overlay</p>
+                  <p className="text-[9px] uppercase text-gray-500 font-bold tracking-widest">Superposición de Ocupación</p>
                   <p className="text-sm text-gray-200">{data.jobTitle}</p>
                </div>
             </div>
             <div className="bg-surface-container-low p-4 border-l-2 border-tertiary/50 flex gap-4 items-center">
                <CreditCard className="text-tertiary/50 w-5 h-5" />
                <div>
-                  <p className="text-[9px] uppercase text-gray-500 font-bold tracking-widest">Synthetic Credit Score</p>
-                  <p className="text-sm text-gray-200 font-bold">{data.creditScore} <span className="text-[9px] text-green-500 font-normal ml-1">EXCELLENT</span></p>
+                  <p className="text-[9px] uppercase text-gray-500 font-bold tracking-widest">Puntaje de Crédito Sintético</p>
+                  <p className="text-sm text-gray-200 font-bold">{data.creditScore} <span className="text-[9px] text-green-500 font-normal ml-1">EXCELENTE</span></p>
                </div>
             </div>
             <div className="bg-surface-container-low p-4 border-l-2 border-primary/50 flex gap-4 items-center">
                <Building className="text-primary/50 w-5 h-5" />
                <div>
-                  <p className="text-[9px] uppercase text-gray-500 font-bold tracking-widest">Registered Safehouse</p>
+                  <p className="text-[9px] uppercase text-gray-500 font-bold tracking-widest">Casa de Seguridad Registrada</p>
                   <p className="text-xs text-gray-200">{data.address}</p>
                </div>
             </div>
@@ -138,7 +138,7 @@ export default function PortfolioPage() {
                <FileText className="w-16 h-16" />
             </div>
             <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary/80 mb-3 flex items-center gap-2">
-               <Activity className="w-4 h-4"/> Legend & Backstory
+               <Activity className="w-4 h-4"/> Leyenda y Historia de Fondo
             </h2>
             <p className="text-sm leading-relaxed text-gray-400 border-l border-primary/20 pl-4 py-1">"{data.backstory}"</p>
          </div>
@@ -150,9 +150,9 @@ export default function PortfolioPage() {
                <div>
                   <h2 className="text-sm font-black uppercase tracking-[0.2em] text-tertiary flex items-center gap-2">
                      <Users className="w-5 h-5" />
-                     Associated Personnel (TR-3)
+                     Personal Asociado (TR-3)
                   </h2>
-                  <p className="text-[10px] text-gray-500 tracking-widest mt-1">Manage linked profiles, clearance, and operational requirements.</p>
+                  <p className="text-[10px] text-gray-500 tracking-widest mt-1">Gestionar perfiles vinculados, autorización y requisitos operativos.</p>
                </div>
                
                <button 
@@ -164,7 +164,7 @@ export default function PortfolioPage() {
                   }`}
                >
                   <Plus className={`w-3 h-3 ${isAdding ? 'rotate-45' : ''} transition-transform duration-300`} />
-                  {isAdding ? 'Cancel Registration' : 'New Intake Form'}
+                  {isAdding ? 'Cancelar Registro' : 'Nuevo Formulario de Ingreso'}
                </button>
             </div>
 
@@ -174,47 +174,47 @@ export default function PortfolioPage() {
                {/* Registration Form (Conditionally rendered) */}
                {isAdding && (
                   <div className="bg-black/60 border border-tertiary/40 rounded-xl p-6 mb-8 animate-in fade-in slide-in-from-top-4 duration-300 shadow-[0_0_30px_rgba(167,139,250,0.05)]">
-                     <h3 className="text-xs font-bold text-tertiary mb-6 uppercase tracking-widest border-b border-tertiary/20 pb-2">New Profile Registration</h3>
+                     <h3 className="text-xs font-bold text-tertiary mb-6 uppercase tracking-widest border-b border-tertiary/20 pb-2">Registro de Nuevo Perfil</h3>
                      
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
                         <div className="space-y-1.5">
-                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest">Alias / Name</label>
+                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest">Alias / Nombre</label>
                            <input
                               type="text"
                               value={depForm.name}
                               onChange={(e) => setDepForm({...depForm, name: e.target.value})}
                               className="w-full bg-[#050505] border border-outline-variant/30 px-4 py-2.5 text-xs focus:outline-none focus:border-tertiary text-gray-200"
-                              placeholder="e.g. S. Miller"
+                              placeholder="ej. S. Miller"
                            />
                         </div>
                         <div className="space-y-1.5">
-                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest">Age</label>
+                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest">Edad</label>
                            <input
                               type="number"
                               value={depForm.age}
                               onChange={(e) => setDepForm({...depForm, age: e.target.value})}
                               className="w-full bg-[#050505] border border-outline-variant/30 px-4 py-2.5 text-xs focus:outline-none focus:border-tertiary text-gray-200"
-                              placeholder="e.g. 12"
+                              placeholder="ej. 12"
                            />
                         </div>
                         <div className="space-y-1.5">
-                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest">Relationship to Target</label>
+                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest">Relación con el Objetivo</label>
                            <input
                               type="text"
                               value={depForm.relationship}
                               onChange={(e) => setDepForm({...depForm, relationship: e.target.value})}
                               className="w-full bg-[#050505] border border-outline-variant/30 px-4 py-2.5 text-xs focus:outline-none focus:border-tertiary text-gray-200"
-                              placeholder="e.g. Daughter, Spouse"
+                              placeholder="ej. Hija, Cónyuge"
                            />
                         </div>
                         <div className="space-y-1.5">
-                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest flex items-center gap-1"><HeartPulse className="w-3 h-3 text-red-500"/> Specific / Medical Needs</label>
+                           <label className="text-[10px] uppercase text-gray-500 font-bold tracking-widest flex items-center gap-1"><HeartPulse className="w-3 h-3 text-red-500"/> Necesidades Específicas / Médicas</label>
                            <input
                               type="text"
                               value={depForm.medicalNeeds}
                               onChange={(e) => setDepForm({...depForm, medicalNeeds: e.target.value})}
                               className="w-full bg-[#050505] border border-outline-variant/30 px-4 py-2.5 text-xs focus:outline-none focus:border-tertiary text-gray-200"
-                              placeholder="e.g. Asthma medication, None"
+                              placeholder="ej. Medicación para el asma, Ninguna"
                            />
                         </div>
                      </div>
@@ -225,7 +225,7 @@ export default function PortfolioPage() {
                            disabled={!depForm.name || !depForm.age || !depForm.relationship}
                            className="bg-tertiary text-black px-8 py-2.5 font-bold text-xs tracking-widest uppercase hover:bg-tertiary/90 transition-colors disabled:opacity-30 flex items-center gap-2"
                         >
-                           <Activity className="w-4 h-4"/> Submit Profile
+                           <Activity className="w-4 h-4"/> Enviar Perfil
                         </button>
                      </div>
                   </div>
@@ -235,8 +235,8 @@ export default function PortfolioPage() {
                {(!data.dependents || data.dependents.length === 0) ? (
                   <div className="h-full flex flex-col items-center justify-center py-20 text-gray-600 opacity-50">
                      <Users className="w-20 h-20 mb-4" />
-                     <p className="text-xs uppercase tracking-[0.3em] font-bold">No Associated Personnel</p>
-                     <p className="text-[10px] mt-2 max-w-xs text-center">Use the intake form above to add family members or dependents to this extraction plan.</p>
+                     <p className="text-xs uppercase tracking-[0.3em] font-bold">Sin Personal Asociado</p>
+                     <p className="text-[10px] mt-2 max-w-xs text-center">Use el formulario de ingreso de arriba para agregar familiares o dependientes a este plan de extracción.</p>
                   </div>
                ) : (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -248,7 +248,7 @@ export default function PortfolioPage() {
                               <div>
                                  <h3 className="text-lg font-black text-gray-100 tracking-tight">{dep.name}</h3>
                                  <p className="text-[10px] uppercase tracking-widest text-tertiary/80 flex items-center gap-2 mt-1">
-                                    <span>{dep.relationship}</span> • <span>{dep.age} Y/O</span>
+                                    <span>{dep.relationship}</span> • <span>{dep.age} AÑOS</span>
                                  </p>
                               </div>
                               <span className="text-[9px] bg-tertiary/10 text-tertiary border border-tertiary/20 px-2 py-1 rounded tracking-widest uppercase font-bold">
@@ -260,20 +260,20 @@ export default function PortfolioPage() {
                               <div className="bg-black/50 p-2.5 rounded border border-white/5 flex items-start gap-3">
                                  <HeartPulse className="w-4 h-4 text-red-500/70 mt-0.5 shrink-0"/>
                                  <div>
-                                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Medical / Specific Needs</p>
-                                    <p className="text-xs text-gray-300 mt-0.5">{dep.medicalNeeds || "None specified"}</p>
+                                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Necesidades Médicas / Específicas</p>
+                                    <p className="text-xs text-gray-300 mt-0.5">{dep.medicalNeeds || "Ninguna especificada"}</p>
                                  </div>
                               </div>
                               
                               <div className="grid grid-cols-2 gap-2">
                                  <div className="bg-black/50 p-2.5 rounded border border-white/5">
-                                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Status</p>
+                                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Estado</p>
                                     <p className="text-[10px] font-mono uppercase tracking-wider text-orange-400 flex items-center gap-1.5">
                                        <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></span> {dep.status}
                                     </p>
                                  </div>
                                  <div className="bg-black/50 p-2.5 rounded border border-white/5">
-                                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Clearance</p>
+                                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">Autorización</p>
                                     <p className="text-[10px] font-mono uppercase tracking-wider text-gray-400">{dep.clearanceStatus}</p>
                                  </div>
                               </div>

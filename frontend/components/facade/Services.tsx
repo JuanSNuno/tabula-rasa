@@ -6,7 +6,7 @@ interface Props {
   setView: (view: 'home' | 'services' | 'support') => void;
 }
 
-export default function FacadeServices({ setView }: Props) {
+export default function FacadeServicios({ setView }: Props) {
   return (
     <>
       {/* TopNavBar */}
@@ -14,13 +14,13 @@ export default function FacadeServices({ setView }: Props) {
         <div className="flex items-center justify-between px-8 py-4 max-w-full">
           <div className="text-xl font-bold tracking-tighter text-on-surface font-headline">LegacyGuard</div>
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => setView('home')} className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-on-surface transition-colors">Home</button>
-            <button onClick={() => setView('services')} className="font-inter text-sm font-medium tracking-tight text-on-surface border-b-2 border-primary pb-1">Services</button>
-            <button onClick={() => setView('support')} className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-on-surface transition-colors">Support</button>
+            <button onClick={() => setView('home')} className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-on-surface transition-colors">Inicio</button>
+            <button onClick={() => setView('services')} className="font-inter text-sm font-medium tracking-tight text-on-surface border-b-2 border-primary pb-1">Servicios</button>
+            <button onClick={() => setView('support')} className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-on-surface transition-colors">Soporte</button>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="px-4 py-2 font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:bg-surface-container-low rounded transition-colors">Client Login</button>
-            <button className="px-4 py-2 font-inter text-sm font-medium tracking-tight bg-primary text-on-primary rounded shadow-sm hover:brightness-110 transition-all">Audit Request</button>
+            <button className="px-4 py-2 font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:bg-surface-container-low rounded transition-colors">Acceso de Cliente</button>
+            <button className="px-4 py-2 font-inter text-sm font-medium tracking-tight bg-primary text-on-primary rounded shadow-sm hover:brightness-110 transition-all">Solicitud de Auditoría</button>
           </div>
         </div>
       </nav>
@@ -37,7 +37,7 @@ export default function FacadeServices({ setView }: Props) {
           </p>
         </header>
 
-        {/* Services Bento-Inspired Grid */}
+        {/* Servicios Bento-Inspired Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
           <div className="md:col-span-8 group relative bg-surface-container-lowest overflow-hidden flex flex-col justify-between">
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
@@ -48,7 +48,7 @@ export default function FacadeServices({ setView }: Props) {
                   <h2 className="text-2xl font-bold tracking-tight text-on-surface font-headline">Auditoría de Bases de Datos</h2>
                 </div>
                 <p className="text-on-surface-variant leading-relaxed mb-8 max-w-lg font-body">
-                    Análisis forense y estructural de repositorios de datos masivos. Implementamos protocolos de validación íntegra para asegurar que cada entrada en su ledger institucional sea inalterable y auditable.
+                    Análisis forense y estructural de repositorios de datos masivos. Implementamos protocolos de validación íntegra para asegurar que cada entrada en su libro mayor institucional sea inalterable y auditable.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -89,13 +89,13 @@ export default function FacadeServices({ setView }: Props) {
                 <span className="block text-[10px] font-bold text-outline uppercase mb-2 font-label">Estado Regulatorio</span>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary"></div>
-                  <span className="text-xs font-bold text-on-surface">Standard Protocol Active</span>
+                  <span className="text-xs font-bold text-on-surface">Protocolo Estándar Activo</span>
                 </div>
               </div>
             </div>
             <div className="p-10 pt-0">
               <button className="w-full py-3 bg-surface-container-high text-on-surface font-bold text-sm hover:bg-surface-container-highest transition-colors">
-                  Descargar Whitepaper
+                  Descargar Libro Blanco
               </button>
             </div>
           </div>
@@ -105,17 +105,17 @@ export default function FacadeServices({ setView }: Props) {
               <span className="material-symbols-outlined text-5xl mb-8">shield</span>
               <h2 className="text-3xl font-black tracking-tight mb-6 font-headline">Planes de Continuidad Institucional</h2>
               <p className="text-primary-fixed opacity-90 leading-relaxed max-w-xl font-body">
-                  Arquitectura de resiliencia para fallos sistémicos. Diseñamos protocolos de "Cold-Storage" y redundancia operativa para asegurar que su institución nunca detenga su procesamiento, sin importar la escala del incidente.
+                  Arquitectura de resiliencia para fallos sistémicos. Diseñamos protocolos de "Almacenamiento en Frío" y redundancia operativa para asegurar que su institución nunca detenga su procesamiento, sin importar la escala del incidente.
               </p>
             </div>
             <div className="mt-12 flex flex-wrap gap-8 items-center border-t border-on-primary/10 pt-8">
               <div className="flex flex-col">
-                <span className="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim font-label">RTO Objetivo</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim font-label">Objetivo RTO</span>
                 <span className="text-2xl font-bold font-headline">&lt; 15 min</span>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim font-label">Redundancia</span>
-                <span className="text-2xl font-bold font-headline">Tier IV</span>
+                <span className="text-2xl font-bold font-headline">Nivel IV</span>
               </div>
               <div className="ml-auto">
                 <button className="px-6 py-3 border border-on-primary text-on-primary font-bold text-sm hover:bg-on-primary hover:text-primary transition-all">
@@ -141,7 +141,7 @@ export default function FacadeServices({ setView }: Props) {
                 <p className="text-xs text-on-surface-variant font-medium leading-tight font-body">Vigilancia autónoma de vectores de riesgo.</p>
               </div>
               <div className="space-y-2">
-                <span className="text-4xl font-black text-on-surface font-headline">Zero</span>
+                <span className="text-4xl font-black text-on-surface font-headline">Cero</span>
                 <p className="text-xs text-on-surface-variant font-medium leading-tight font-body">Brechas de seguridad reportadas en el último ciclo.</p>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function FacadeServices({ setView }: Props) {
             <p className="text-on-surface-variant mb-8 font-body">Nuestros auditores senior están disponibles para realizar una revisión inicial de su arquitectura de sistemas y marcos de cumplimiento.</p>
             <div className="flex gap-4">
               <button className="px-8 py-4 bg-primary text-on-primary font-bold rounded shadow-sm hover:brightness-110 transition-all">Contactar con un Especialista</button>
-              <button className="px-8 py-4 bg-surface-container-low text-on-surface font-bold rounded hover:bg-surface-container-high transition-all">Solicitar Demo</button>
+              <button className="px-8 py-4 bg-surface-container-low text-on-surface font-bold rounded hover:bg-surface-container-high transition-all">Solicitar Demostración</button>
             </div>
           </div>
         </section>
@@ -165,13 +165,13 @@ export default function FacadeServices({ setView }: Props) {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full opacity-80 hover:opacity-100 transition-opacity">
           <div className="text-lg font-black text-on-surface font-headline mb-4 md:mb-0">LegacyGuard</div>
           <div className="flex flex-wrap justify-center gap-6 mb-4 md:mb-0">
-            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
-            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms of Service</a>
-            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Security Whitepaper</a>
-            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Regulatory Compliance</a>
+            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Política de Privacidad</a>
+            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Términos de Servicio</a>
+            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Libro Blanco de Seguridad</a>
+            <a className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant hover:text-on-surface transition-colors" href="#">Cumplimiento Normativo</a>
           </div>
           <p className="font-inter text-xs tracking-wide uppercase font-semibold text-on-surface-variant">
-              © 2024 LegacyGuard Systems. Institutional Authority in System Auditing.
+              © 2024 Sistemas LegacyGuard. Autoridad Institucional en Auditoría de Sistemas.
           </p>
         </div>
       </footer>

@@ -48,14 +48,14 @@ export default function ZkScanner({ sessionId, onVerified }: ZkScannerProps) {
 
   return (
     <div className="border border-green-800 bg-black p-6 rounded-lg font-mono w-full max-w-lg mx-auto">
-      <h3 className="text-green-500 text-xl mb-4">[ZKP] OFAC/Interpol Clearence Required</h3>
+      <h3 className="text-green-500 text-xl mb-4">[ZKP] OFAC/Interpol Autorización Requerida</h3>
       <p className="text-gray-400 mb-6 text-sm">
         Para acceder a la Mixnet, debe proveer una credencial ZK verificable de que no figura en listas de sanciones (SDN/Red Notices). No envíe PII.
       </p>
       
       <div className="flex justify-center mb-6">
         <div className={`w-32 h-32 border-4 ${scanning ? 'border-green-500 animate-pulse' : 'border-gray-600'} rounded-lg flex items-center justify-center`}>
-           <span className="text-xs text-center text-gray-500">QR / Wallet<br/>Scanner</span>
+           <span className="text-xs text-center text-gray-500">Escáner<br/>QR / Wallet</span>
         </div>
       </div>
 

@@ -48,10 +48,10 @@ export default function PortalDashboard() {
           const data = await response.json();
           setSessionId(data.id);
         } else {
-          setError("Mixnet Routing Error. Hostile network detected.");
+          setError("Error de Enrutamiento Mixnet. Red hostil detectada.");
         }
       } catch (err) {
-        setError("Network unreachable. Is the backend running?");
+        setError("Red inalcanzable. ¿Está ejecutándose el backend?");
       }
     };
     initSession();
@@ -69,7 +69,7 @@ export default function PortalDashboard() {
           setMessages(data || []);
         }
       } catch (err) {
-        console.error("Polling error", err);
+        console.error("Error de sondeo", err);
       }
     };
 
@@ -117,7 +117,7 @@ export default function PortalDashboard() {
         setMessages([]);
         setInputText('');
         // Restaurar título de fachada antes de redirigir
-        document.title = 'LegacyGuard Systems | Institutional Auditing';
+        document.title = 'Sistemas LegacyGuard | Auditoría Institucional';
         // Reemplazar historial para que la página no aparezca en "Atrás"
         window.location.replace('about:blank');
       }
@@ -128,8 +128,8 @@ export default function PortalDashboard() {
 
   // Title Masking: enmascara la pestaña con el título de fachada cuando pierde el foco
   useEffect(() => {
-    const FACADE_TITLE = 'LegacyGuard Systems | Institutional Auditing';
-    const ACTIVE_TITLE  = 'TACTICAL_LINK [ACTIVE] ●';
+    const FACADE_TITLE = 'Sistemas LegacyGuard | Auditoría Institucional';
+    const ACTIVE_TITLE  = 'ENLACE_TÁCTICO [ACTIVO] ●';
 
     const handleVisibility = () => {
       document.title = document.hidden ? FACADE_TITLE : ACTIVE_TITLE;
@@ -153,7 +153,7 @@ export default function PortalDashboard() {
     const handleUnload = () => {
       setMessages([]);
       setInputText('');
-      document.title = 'LegacyGuard Systems | Institutional Auditing';
+      document.title = 'Sistemas LegacyGuard | Auditoría Institucional';
     };
     window.addEventListener('beforeunload', handleUnload);
     return () => window.removeEventListener('beforeunload', handleUnload);
@@ -241,7 +241,7 @@ export default function PortalDashboard() {
         setInputText('');
       }
     } catch (err) {
-      console.error("Failed to send", err);
+      console.error("Fallo al enviar", err);
     } finally {
       setLoading(false);
     }
@@ -263,24 +263,24 @@ export default function PortalDashboard() {
       {/* TopNavBar */}
       <header className="fixed top-0 w-full z-50 bg-[#0e0e10] border-b border-outline-variant/20 flex justify-between items-center px-6 h-12">
         <div className="flex items-center gap-4">
-          <span className="font-bold tracking-widest text-primary text-sm uppercase">EXTRACTION_PORTAL_V.04</span>
+          <span className="font-bold tracking-widest text-primary text-sm uppercase">PORTAL_DE_EXTRACCIÓN_V.04</span>
           {isZkVerified && (
             <span className="text-tertiary-container animate-pulse flex items-center gap-2 text-xs uppercase">
               <span className="w-1.5 h-1.5 bg-tertiary-container"></span>
-              STATUS: SECURE CONDUIT ESTABLISHED
+              ESTADO: CONDUCTO SEGURO ESTABLECIDO
             </span>
           )}
         </div>
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3 text-xs uppercase">
-            <span className="text-on-surface-variant">SESSION_ID:</span>
-            <span className="text-primary">[{sessionId ? sessionId.substring(0, 13) + '...' : 'NEGOTIATING'}]</span>
+            <span className="text-on-surface-variant">ID_DE_SESIÓN:</span>
+            <span className="text-primary">[{sessionId ? sessionId.substring(0, 13) + '...' : 'NEGOCIANDO'}]</span>
           </div>
           {/* Banner del Pase de Acceso Temporal en el header */}
           {accessPass && (
             <div className="flex items-center gap-2 border border-primary/40 bg-primary/10 px-3 py-1 rounded-sm">
               <span className="material-symbols-outlined text-primary text-xs">key</span>
-              <span className="text-[10px] text-primary font-bold uppercase tracking-widest">PASS: {accessPass.toUpperCase()}</span>
+              <span className="text-[10px] text-primary font-bold uppercase tracking-widest">PASE: {accessPass.toUpperCase()}</span>
               <span className="text-[10px] text-on-surface-variant">TTL: {passCountdown}</span>
             </div>
           )}
@@ -305,35 +305,35 @@ export default function PortalDashboard() {
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'DASHBOARD' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">grid_view</span>
-              OVERVIEW
+              RESUMEN
             </button>
             <button
               onClick={() => setActiveTab('CRYPTO_VAL')}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'CRYPTO_VAL' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">qr_code_2</span>
-              SECURE_VAL
+              VAL_SEGURA
             </button>
             <button
               onClick={() => setActiveTab('AUDIT')}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'AUDIT' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">history_edu</span>
-              PAST_LIFE_AUDIT
+              AUDIT_VIDA_PASADA
             </button>
             <button
               onClick={() => setActiveTab('EVAC_ROUTE')}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'EVAC_ROUTE' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">route</span>
-              EVAC_ROUTE
+              RUTA_EVAC
             </button>
             <button
               onClick={() => setActiveTab('COMM_LINK')}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'COMM_LINK' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">chat_bubble</span>
-              COMM_LINK
+              ENLACE_COM
             </button>
           </div>
           <div className="mt-auto p-4 pb-16 border-t border-outline-variant/20">
@@ -342,7 +342,7 @@ export default function PortalDashboard() {
                 <span className="material-symbols-outlined text-on-surface-variant">person</span>
               </div>
               <div>
-                <div className="text-primary text-xs font-bold">OPERATOR_LOGGED</div>
+                <div className="text-primary text-xs font-bold">OPERADOR_CONECTADO</div>
                 <div className="text-on-surface-variant text-[10px]">AUTH_LVL: 04</div>
               </div>
             </div>
@@ -373,7 +373,7 @@ export default function PortalDashboard() {
             {activeTab === 'CRYPTO_VAL' && (
               <div className="w-full max-w-md mx-auto flex flex-col gap-12 pt-12 animate-in slide-in-from-top duration-500">
                 <div className="flex justify-between items-end border-b border-outline-variant/30 pb-6">
-                  <h2 className="text-xs font-black text-primary tracking-[0.3em] uppercase">CLEAN BACKGROUND PROOF (ZKP)</h2>
+                  <h2 className="text-xs font-black text-primary tracking-[0.3em] uppercase">PRUEBA DE ANTECEDENTES LIMPIOS (ZKP)</h2>
                   <span className="text-[10px] text-on-surface-variant font-bold uppercase">ANONYMOUS_VER_4.9</span>
                 </div>
 
@@ -393,10 +393,10 @@ export default function PortalDashboard() {
                       <div className="p-6 space-y-2 text-xs font-mono">
                         <p className="text-on-surface-variant"><span className="text-primary">$</span> init_zk_protocol --mode=ofac_interpol_check</p>
                         <p className="text-green-500 animate-pulse">▶ Generando zk-SNARK circuit...</p>
-                        <p className="text-on-surface-variant">▶ Protocol: <span className="text-primary">Polygon ID / Groth16</span></p>
-                        <p className="text-on-surface-variant">▶ Scope: <span className="text-primary">SDN / Red Notices / PEP Lists</span></p>
-                        <p className="text-on-surface-variant">▶ PII exposed: <span className="text-tertiary-container font-bold">NONE</span></p>
-                        <p className="text-on-surface-variant">▶ Session: <span className="text-primary">{sessionId ? sessionId.substring(0, 16) + '...' : 'PENDING'}</span></p>
+                        <p className="text-on-surface-variant">▶ Protocolo: <span className="text-primary">Polygon ID / Groth16</span></p>
+                        <p className="text-on-surface-variant">▶ Alcance: <span className="text-primary">SDN / Notificaciones Rojas / Listas PEP</span></p>
+                        <p className="text-on-surface-variant">▶ PII expuesta: <span className="text-tertiary-container font-bold">NINGUNA</span></p>
+                        <p className="text-on-surface-variant">▶ Sesión: <span className="text-primary">{sessionId ? sessionId.substring(0, 16) + '...' : 'PENDIENTE'}</span></p>
                         <div className="border-t border-outline-variant/20 pt-3 mt-3">
                           <p className="text-on-surface-variant text-[10px] leading-relaxed uppercase tracking-widest">
                             [MVP] Protocolo simulado. En producción, se integrará con wallet ZK (Polygon ID / Semaphore). La prueba zero-knowledge valida que el cliente no figura en listas de sanciones sin revelar su identidad.
@@ -434,7 +434,7 @@ export default function PortalDashboard() {
                       </button>
 
                       <div className="text-tertiary font-bold text-[10px] uppercase text-center tracking-[0.2em] animate-pulse">
-                        OFAC / INTERPOL / SDN CHECKS: STANDBY
+                        CHEQUEOS OFAC / INTERPOL / SDN: EN ESPERA
                       </div>
                     </div>
 
@@ -450,10 +450,10 @@ export default function PortalDashboard() {
                   <div className="flex flex-col items-center justify-center space-y-6 py-16 border border-primary/20 bg-primary/5 rounded-sm shadow-inner mt-12 mb-4">
                     <span className="material-symbols-outlined text-6xl text-primary mb-2">verified_user</span>
                     <div className="text-center font-bold tracking-[0.3em] text-xl text-primary uppercase">
-                      CLEAN RECORD VERIFIED
+                      HISTORIAL LIMPIO VERIFICADO
                     </div>
                     <div className="text-[11px] text-on-surface-variant uppercase text-center max-w-xs leading-loose tracking-widest font-bold">
-                      Background check successful via Zero-Knowledge proof. No PII revealed.
+                      Verificación de antecedentes exitosa a través de prueba de Conocimiento Cero. No se reveló PII.
                     </div>
 
                     {/* Pase de Acceso Temporal - Otorgado por el Operador de Admisión */}
@@ -505,35 +505,35 @@ export default function PortalDashboard() {
             {activeTab === 'DASHBOARD' && (
               <div className="w-full h-full flex flex-col gap-12 py-8 animate-in fade-in duration-300">
                 <div className="p-8 border border-primary/20 bg-primary/5 rounded-sm">
-                  <h3 className="text-primary font-black text-xl uppercase tracking-tighter mb-4">WELCOME TO TABULA RASA CORE</h3>
+                  <h3 className="text-primary font-black text-xl uppercase tracking-tighter mb-4">BIENVENIDO AL NÚCLEO DE TABULA RASA</h3>
                   <p className="text-xs text-on-surface-variant leading-relaxed uppercase tracking-widest">
-                    Your digital extraction begins here. Use the sidebar to audit your past life footprints or validate your clean record status via ZKP.
+                    Su extracción digital comienza aquí. Utilice la barra lateral para auditar las huellas de su vida pasada o validar su estado de antecedentes limpios a través de ZKP.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6">
                   <div className="p-6 border border-outline-variant/20 bg-surface-container-low flex flex-col gap-4">
                     <span className="material-symbols-outlined text-primary text-3xl">history_edu</span>
-                    <h4 className="text-xs font-bold text-on-surface uppercase">Unchecked Traces</h4>
-                    <span className="text-2xl font-black text-primary">05 DETECTED</span>
-                    <button onClick={() => setActiveTab('AUDIT')} className="text-[10px] text-primary font-bold uppercase hover:underline text-left">GOTO AUDIT MANTLE</button>
+                    <h4 className="text-xs font-bold text-on-surface uppercase">Rastros no Verificados</h4>
+                    <span className="text-2xl font-black text-primary">05 DETECTADOS</span>
+                    <button onClick={() => setActiveTab('AUDIT')} className="text-[10px] text-primary font-bold uppercase hover:underline text-left">IR AL MANTO DE AUDITORÍA</button>
                   </div>
                   <div className="p-6 border border-outline-variant/20 bg-surface-container-low flex flex-col gap-4">
                     <span className="material-symbols-outlined text-primary text-3xl">verified_user</span>
-                    <h4 className="text-xs font-bold text-on-surface uppercase">Anony-Clearance</h4>
-                    <span className={`text-2xl font-black ${isZkVerified ? 'text-primary' : 'text-on-surface-variant'}`}>{isZkVerified ? 'VALIDATED' : 'PENDING'}</span>
-                    <button onClick={() => setActiveTab('CRYPTO_VAL')} className="text-[10px] text-primary font-bold uppercase hover:underline text-left">GOTO ZK-VALIDATION</button>
+                    <h4 className="text-xs font-bold text-on-surface uppercase">Autorización Anónima</h4>
+                    <span className={`text-2xl font-black ${isZkVerified ? 'text-primary' : 'text-on-surface-variant'}`}>{isZkVerified ? 'VALIDADO' : 'PENDIENTE'}</span>
+                    <button onClick={() => setActiveTab('CRYPTO_VAL')} className="text-[10px] text-primary font-bold uppercase hover:underline text-left">IR A VALIDACIÓN ZK</button>
                   </div>
                 </div>
 
                 {/* Metadata Grid */}
                 <div className="mt-auto grid grid-cols-2 gap-px bg-outline-variant/30 border border-outline-variant/30">
                   <div className="bg-surface p-3 space-y-1">
-                    <div className="text-[10px] text-on-surface-variant uppercase">Latency</div>
-                    <div className="text-xs text-primary">12ms [STABLE]</div>
+                    <div className="text-[10px] text-on-surface-variant uppercase">Latencia</div>
+                    <div className="text-xs text-primary">12ms [ESTABLE]</div>
                   </div>
                   <div className="bg-surface p-3 space-y-1">
-                    <div className="text-[10px] text-on-surface-variant uppercase">Encryption</div>
+                    <div className="text-[10px] text-on-surface-variant uppercase">Cifrado</div>
                     <div className="text-xs text-primary">AES-256-GCM</div>
                   </div>
                 </div>
@@ -548,7 +548,7 @@ export default function PortalDashboard() {
                 <div className="flex items-center justify-between border-b border-outline-variant/20 pb-4 mb-4 flex-shrink-0">
                   <div>
                     <div className="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Modo: Consola Anti-Rastro / Sin Historial</div>
-                    <div className="text-xs font-black text-primary uppercase tracking-widest">COMM_LINK CONSOLE</div>
+                    <div className="text-xs font-black text-primary uppercase tracking-widest">CONSOLA ENLACE_COM</div>
                   </div>
                   <div className="flex items-center gap-3">
                     {accessPass && (
@@ -574,7 +574,7 @@ export default function PortalDashboard() {
                     <span className="material-symbols-outlined text-4xl text-on-surface-variant">lock</span>
                     <span className="text-xs text-on-surface-variant uppercase tracking-widest text-center leading-loose px-8">
                       SE REQUIERE PASE DE ACCESO TEMPORAL.<br />
-                      COMPLETA LA VERIFICACIÓN ZK EN SECURE_VAL.
+                      COMPLETA LA VERIFICACIÓN ZK EN VAL_SEGURA.
                     </span>
                   </div>
                 ) : (
@@ -587,14 +587,14 @@ export default function PortalDashboard() {
                       <span className="text-outline-variant">|</span>
                       <span className="text-primary font-bold">HISTORIAL: NO GUARDADO</span>
                       <span className="text-outline-variant">|</span>
-                      <span>AUTOCOMPLETE: DESACTIVADO</span>
+                      <span>AUTOCOMPLETAR: DESACTIVADO</span>
                     </div>
 
                     {/* Stream de mensajes — no seleccionable para evitar copiar al portapapeles del SO */}
                     <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 mb-4 no-select-log">
                       {/* Mensaje de bienvenida del sistema */}
                       <div className="flex flex-col gap-1">
-                        <span className="text-[10px] font-bold text-on-surface-variant bg-surface-container-highest px-1.5 py-0.5 w-fit uppercase">SYS_NODE</span>
+                        <span className="text-[10px] font-bold text-on-surface-variant bg-surface-container-highest px-1.5 py-0.5 w-fit uppercase">NODO_SIS</span>
                         <div className="bg-surface-container-high p-3 border-l-2 border-outline-variant/40 w-fit max-w-[90%] text-xs leading-relaxed text-on-surface-variant font-mono">
                           Protocolo Sphinx activo. Metadatos neutralizados. Los mensajes se destruyen en 15min. No existe registro de esta conversación.
                         </div>
@@ -614,7 +614,7 @@ export default function PortalDashboard() {
                           <div key={msg.id} className="flex flex-col gap-0.5 items-end animate-in slide-in-from-bottom duration-200">
                             <div className="flex items-center gap-2">
                               <span className="text-[9px] text-on-surface-variant/50 uppercase">TTL: {minsLeft}min</span>
-                              <span className="text-[10px] font-bold text-primary bg-surface-container-highest px-1.5 py-0.5 uppercase">CLIENT_V</span>
+                              <span className="text-[10px] font-bold text-primary bg-surface-container-highest px-1.5 py-0.5 uppercase">CLIENTE_V</span>
                             </div>
                             <div className="bg-surface-container-low p-3 border-r-2 border-primary/60 w-fit max-w-[90%] text-xs leading-relaxed text-on-surface font-mono">
                               {decryptMock(msg.encryptedPayload)}
@@ -665,12 +665,12 @@ export default function PortalDashboard() {
             <div className="h-12 border-b border-outline-variant/20 flex items-center justify-between px-6 bg-[#0e0e10]">
               <div className="flex items-center gap-3 text-primary">
                 <span className="material-symbols-outlined text-sm">chat_bubble</span>
-                <span className="text-xs font-bold tracking-tighter uppercase">TACTICAL_LINK [ENCRYPTED]</span>
+                <span className="text-xs font-bold tracking-tighter uppercase">ENLACE_TÁCTICO [CIFRADO]</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1.5">
                   <div className={`w-1.5 h-1.5 rounded-none ${isZkVerified ? 'bg-tertiary-container animate-pulse' : 'bg-surface-container-high'}`}></div>
-                  <span className="text-[10px] text-on-surface-variant uppercase">TUNNEL: {isZkVerified ? 'ACTIVE' : 'LOCKED'}</span>
+                  <span className="text-[10px] text-on-surface-variant uppercase">TÚNEL: {isZkVerified ? 'ACTIVO' : 'BLOQUEADO'}</span>
                 </div>
               </div>
             </div>
@@ -681,8 +681,8 @@ export default function PortalDashboard() {
                   <span className="material-symbols-outlined text-4xl text-on-surface-variant">lock</span>
                   <span className="text-xs uppercase text-on-surface-variant tracking-widest px-8 text-center leading-loose">
                     {!isZkVerified
-                      ? 'AWAITING ZK CLEARANCE TO OPEN TUNNEL. VALIDATE IN SECURE_VAL SECTION.'
-                      : 'AWAITING ACCESS PASS FROM ADMISSION OPERATOR...'}
+                      ? 'ESPERANDO AUTORIZACIÓN ZK PARA ABRIR TÚNEL. VALIDE EN SECCIÓN VAL_SEGURA.'
+                      : 'ESPERANDO PASE DE ACCESO DEL OPERADOR DE ADMISIÓN...'}
                   </span>
                 </div>
               ) : (
@@ -690,7 +690,7 @@ export default function PortalDashboard() {
                   <div className="group flex flex-col gap-1 items-start">
                     <div className="flex items-center gap-4 w-full justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold text-on-surface-variant bg-surface-container-highest px-1.5 py-0.5">OP_NODE_09</span>
+                        <span className="text-[10px] font-bold text-on-surface-variant bg-surface-container-highest px-1.5 py-0.5">NODO_OP_09</span>
                       </div>
                     </div>
                     <div className="bg-surface-container-high p-3 border-l-2 border-primary w-fit max-w-[85%] text-xs leading-relaxed text-on-surface">
@@ -701,7 +701,7 @@ export default function PortalDashboard() {
                   {messages.map(msg => (
                     <div key={msg.id} className="group flex flex-col gap-1 items-end animate-in slide-in-from-right duration-300">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold text-primary bg-surface-container-highest px-1.5 py-0.5 uppercase">Client_V</span>
+                        <span className="text-[10px] font-bold text-primary bg-surface-container-highest px-1.5 py-0.5 uppercase">Cliente_V</span>
                       </div>
                       <div className="bg-surface-container-low p-3 border-r-2 border-tertiary-container w-fit max-w-[85%] text-xs leading-relaxed text-on-surface">
                         {decryptMock(msg.encryptedPayload)}
@@ -721,7 +721,7 @@ export default function PortalDashboard() {
                 <span className="pl-4 text-primary text-xs font-bold">$</span>
                 <input
                   className="flex-1 bg-transparent border-none text-xs text-on-surface focus:ring-0 placeholder:text-on-surface-variant uppercase tracking-tight py-3 outline-none"
-                  placeholder="ENTER COMMAND..."
+                  placeholder="INTRODUCIR COMANDO..."
                   type="text"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
@@ -732,7 +732,7 @@ export default function PortalDashboard() {
                   spellCheck={false}
                 />
                 <button type="submit" disabled={!isZkVerified || !accessPass || loading} className="bg-primary text-on-primary-container font-black text-xs px-6 py-3 h-full hover:bg-tertiary transition-colors disabled:opacity-50">
-                  SEND
+                  ENVIAR
                 </button>
               </form>
             </div>
@@ -747,8 +747,8 @@ export default function PortalDashboard() {
           <span className="flex items-center gap-1"><span className="w-1 h-1 bg-tertiary-container"></span> MEM: 4.2GB</span>
         </div>
         <div className="flex items-center gap-4 font-bold">
-          <span className="text-secondary tracking-widest">ENCRYPTION: AES-256-GCM</span>
-          <span className="text-primary tracking-widest">STABLE_CONDUIT</span>
+          <span className="text-secondary tracking-widest">CIFRADO: AES-256-GCM</span>
+          <span className="text-primary tracking-widest">CONDUCTO_ESTABLE</span>
         </div>
       </footer>
     </div >

@@ -52,38 +52,38 @@ export default function ExtractionPage() {
               </div>
               <div>
                 <h2 className="font-bold tracking-widest text-sm text-red-500">OP: NOMAD</h2>
-                <p className="text-xs uppercase tracking-widest text-red-900">Tactical Extraction</p>
+                <p className="text-xs uppercase tracking-widest text-red-900">Extracción Táctica</p>
                 <div className="flex items-center gap-1 mt-1">
                   <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                  <span className="text-[10px] text-green-700 uppercase font-bold">In-Field [Active]</span>
+                  <span className="text-[10px] text-green-700 uppercase font-bold">En Campo [Activo]</span>
                 </div>
               </div>
             </div>
           </div>
           <div className="mt-6 space-y-2 text-xs uppercase tracking-widest text-red-800">
-             <div className="flex justify-between border-b border-red-950 pb-1"><span>Target:</span> <span className="text-red-500">Subject_TR-12</span></div>
-             <div className="flex justify-between border-b border-red-950 pb-1"><span>Grid:</span> <span className="text-red-500">Sector 4, Alpha</span></div>
-             <div className="flex justify-between"><span>Status:</span> <span className="text-red-500">En Route</span></div>
+             <div className="flex justify-between border-b border-red-950 pb-1"><span>Objetivo:</span> <span className="text-red-500">Sujeto_TR-12</span></div>
+             <div className="flex justify-between border-b border-red-950 pb-1"><span>Cuadrícula:</span> <span className="text-red-500">Sector 4, Alpha</span></div>
+             <div className="flex justify-between"><span>Estado:</span> <span className="text-red-500">En Camino</span></div>
           </div>
         </div>
 
         {/* ALERTS */}
         <div className="flex-1 p-6 overflow-y-auto">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-red-700 mb-4">Tactical Comms</h3>
+          <h3 className="text-xs font-bold uppercase tracking-widest text-red-700 mb-4">Comunicaciones Tácticas</h3>
           <div className="space-y-4">
             <div className="p-3 border border-red-900 bg-red-950/10 text-xs">
                <div className="flex justify-between items-center text-red-500 font-bold mb-1">
-                 <span>[UPDATE] UAV Patrol</span>
+                 <span>[ACTUALIZACIÓN] Patrulla UAV</span>
                  <span className="text-[10px]">12:04</span>
                </div>
-               <p className="text-red-800">Hostile drone detected in sector 4. Prepare IR jamming.</p>
+               <p className="text-red-800">Dron hostil detectado en el sector 4. Prepare interferencia IR.</p>
             </div>
             <div className="p-3 border border-red-950 bg-black/50 text-xs">
                <div className="flex justify-between items-center text-red-700 font-bold mb-1">
-                 <span>[CLEAR] Safehouse B</span>
+                 <span>[DESPEJADO] Casa de Seguridad B</span>
                  <span className="text-[10px]">11:45</span>
                </div>
-               <p className="text-red-900">Perimeter secured. Awaiting package drop.</p>
+               <p className="text-red-900">Perímetro asegurado. Esperando entrega del paquete.</p>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function ExtractionPage() {
         {/* LOGOUT */}
         <div className="p-4 border-t border-red-950">
            <Link href="/" className="flex items-center justify-center gap-2 w-full py-2 bg-red-950 text-red-500 hover:bg-red-900 hover:text-white transition-colors text-xs font-bold tracking-widest uppercase">
-              Abort Mission
+              Abortar Misión
            </Link>
         </div>
       </aside>
@@ -104,11 +104,11 @@ export default function ExtractionPage() {
         <header className="p-6 flex items-center justify-between border-b border-red-950 z-10 bg-[#050000]/80 backdrop-blur">
           <div className="flex gap-6 text-xs uppercase font-bold tracking-widest">
             <span className="text-red-500 border-b-2 border-red-500 pb-1">ProjAttacker (TR-25)</span>
-            <span className="text-red-900 cursor-not-allowed">Surveillance Feed (Offline)</span>
-            <span className="text-red-900 cursor-not-allowed">Routing & Maps</span>
+            <span className="text-red-900 cursor-not-allowed">Transmisión de Vigilancia (Desconectado)</span>
+            <span className="text-red-900 cursor-not-allowed">Enrutamiento y Mapas</span>
           </div>
           <div className="text-xs text-red-500 border border-red-900 px-3 py-1 bg-red-950/30">
-            LOCAL TIME: {new Date().toLocaleTimeString()}
+            HORA LOCAL: {new Date().toLocaleTimeString()}
           </div>
         </header>
 
@@ -118,9 +118,9 @@ export default function ExtractionPage() {
               <div>
                 <h2 className="text-4xl font-black tracking-tighter text-red-600 uppercase flex items-center gap-4">
                    <span className="material-symbols-outlined text-4xl">radar</span>
-                   Adversarial Projections
+                   Proyecciones Adversarias
                 </h2>
-                <p className="text-sm text-red-800 mt-2 max-w-2xl">Deploy infrared noise to blind CCTV cameras and hostile drones during extraction. High-power jamming will saturate visual sensors.</p>
+                <p className="text-sm text-red-800 mt-2 max-w-2xl">Despliegue ruido infrarrojo para cegar cámaras CCTV y drones hostiles durante la extracción. La interferencia de alta potencia saturará los sensores visuales.</p>
               </div>
               
               {/* Action Button */}
@@ -136,11 +136,11 @@ export default function ExtractionPage() {
                 {active ? (
                   <span className="relative z-10 flex items-center gap-2">
                      <span className="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
-                     Engaging...
+                     Iniciando...
                   </span>
                 ) : (
                   <>
-                    <span className="relative z-10 group-hover:scale-105 inline-block transition-transform">Initiate Attack</span>
+                    <span className="relative z-10 group-hover:scale-105 inline-block transition-transform">Iniciar Ataque</span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform"></div>
                   </>
                 )}
@@ -153,7 +153,7 @@ export default function ExtractionPage() {
                 <div className="absolute top-0 w-full h-1 bg-gradient-to-r from-red-950 via-red-600 to-red-950"></div>
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-20 pointer-events-none"></div>
                 
-                <p className="text-red-800 mb-6 font-bold uppercase tracking-[0.3em] text-[10px] z-10">IR Noise Saturation</p>
+                <p className="text-red-800 mb-6 font-bold uppercase tracking-[0.3em] text-[10px] z-10">Saturación de Ruido IR</p>
                 
                 <div className="relative flex items-center justify-center w-48 h-48 rounded-full border border-red-950/50 bg-red-950/10 shadow-[inset_0_0_50px_rgba(220,38,38,0.1)]">
                   {/* Radar Sweep */}
@@ -174,7 +174,7 @@ export default function ExtractionPage() {
                   {/* Center Value */}
                   <div className="flex flex-col items-center z-20">
                      <span className="text-5xl font-black text-white drop-shadow-md">{Math.floor(data.coverage)}<span className="text-2xl text-red-600">%</span></span>
-                     <span className="text-[9px] text-red-500 font-bold uppercase tracking-widest mt-1 opacity-70">Coverage</span>
+                     <span className="text-[9px] text-red-500 font-bold uppercase tracking-widest mt-1 opacity-70">Cobertura</span>
                   </div>
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function ExtractionPage() {
               <div className="col-span-2 bg-black border border-red-900 rounded-xl p-6 relative overflow-hidden shadow-2xl flex flex-col h-[350px]">
                  <div className="absolute inset-0 bg-red-950/5 pointer-events-none"></div>
                  <div className="flex justify-between items-center mb-6 z-10">
-                    <p className="text-red-800 font-bold uppercase tracking-[0.3em] text-[10px]">Signal Jamming Power (dBm)</p>
+                    <p className="text-red-800 font-bold uppercase tracking-[0.3em] text-[10px]">Potencia de Interferencia de Señal (dBm)</p>
                     <p className="text-2xl font-bold text-red-500">{data.jammingPower} <span className="text-sm text-red-800">W</span></p>
                  </div>
                  
@@ -204,19 +204,19 @@ export default function ExtractionPage() {
             <div className="grid grid-cols-3 gap-6">
                <div className="bg-red-950/20 border border-red-900/50 rounded-lg p-6 flex flex-col items-center">
                   <span className="material-symbols-outlined text-red-800 text-4xl mb-2">videocam_off</span>
-                  <p className="text-[10px] text-red-700 font-bold uppercase tracking-widest text-center">Cameras Blinded</p>
+                  <p className="text-[10px] text-red-700 font-bold uppercase tracking-widest text-center">Cámaras Cegadas</p>
                   <p className="text-5xl font-black text-orange-500 mt-2">{data.camerasCaged}</p>
                </div>
                <div className="bg-red-950/20 border border-red-900/50 rounded-lg p-6 flex flex-col items-center">
                   <span className="material-symbols-outlined text-red-800 text-4xl mb-2">flight_takeoff</span>
-                  <p className="text-[10px] text-red-700 font-bold uppercase tracking-widest text-center">UAVs Disrupted</p>
+                  <p className="text-[10px] text-red-700 font-bold uppercase tracking-widest text-center">UAVs Interrumpidos</p>
                   <p className="text-5xl font-black text-red-500 mt-2">{Math.floor(data.camerasCaged / 3)}</p>
                </div>
                <div className="bg-red-950/20 border border-red-900/50 rounded-lg p-6 flex justify-center items-center">
                   <div className="text-center">
-                     <p className="text-[10px] text-red-700 font-bold uppercase tracking-[0.2em] mb-4">System Status</p>
+                     <p className="text-[10px] text-red-700 font-bold uppercase tracking-[0.2em] mb-4">Estado del Sistema</p>
                      <p className={`text-xl font-bold uppercase tracking-widest ${data.coverage > 95 ? 'text-green-500 animate-pulse' : 'text-red-600'}`}>
-                        {data.coverage > 95 ? 'TARGET SECURED' : (active ? 'DEPLOYING NOISE' : 'STANDBY')}
+                        {data.coverage > 95 ? 'OBJETIVO ASEGURADO' : (active ? 'DESPLEGANDO RUIDO' : 'EN ESPERA')}
                      </p>
                   </div>
                </div>

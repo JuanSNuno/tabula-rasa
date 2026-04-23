@@ -20,3 +20,9 @@ type RouteMessageUseCase interface {
 	SendMessage(ctx context.Context, sessionID string, encryptedPayload string) (*domain.Message, error)
 	GetMessages(ctx context.Context, sessionID string) ([]*domain.Message, error)
 }
+
+// GrantAccessPassUseCase otorga un pase de acceso temporal al cliente ya verificado por ZK.
+// El pase es un token efímero que habilita el canal de chat sin requerir cuenta ni contraseña rastreable.
+type GrantAccessPassUseCase interface {
+	Execute(ctx context.Context, sessionID string) (*domain.Session, error)
+}

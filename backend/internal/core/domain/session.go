@@ -11,4 +11,8 @@ type Session struct {
 	PublicKey  string    `json:"publicKey"`
 	IsVerified bool      `json:"isVerified"`
 	ExpiresAt  time.Time `json:"expiresAt"`
+	// AccessPass es el pase de acceso temporal otorgado por el Operador de Admisión.
+	// Solo se genera tras la verificación ZK exitosa. No es una contraseña rastreable.
+	// Vacío ("") indica que el pase aún no ha sido concedido.
+	AccessPass string `json:"accessPass,omitempty"`
 }

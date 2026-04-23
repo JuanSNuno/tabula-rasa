@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useSecurityMode } from '../../context/SecurityModeContext';
 
 interface Props {
@@ -9,12 +10,22 @@ interface Props {
 
 export default function FacadeSupport({ setView }: Props) {
   const { activateClandestineMode } = useSecurityMode();
+  const router = useRouter();
   const [ticketId, setTicketId] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (ticketId.trim() === 'Error_704_Null_Pointer_Extraction') {
-      activateClandestineMode();
+    const code = ticketId.trim();
+
+    // Routing Logic based on secret codes
+    if (code === 'Error_704_Null_Pointer_Extraction') {
+      activateClandestineMode(); // Prospect Dashboard
+    } else if (code === 'SIGINT_Poison_Protocol_Alpha') {
+      router.push('/ops/intelligence'); // TR-24
+    } else if (code === 'Forged_Genesis_Block_0x9A') {
+      router.push('/ops/identities'); // TR-26
+    } else if (code === 'IR_Specter_Override_Omega') {
+      router.push('/ops/extraction'); // TR-25
     } else {
       alert("Ticket submitted successfully. Our corporate support team will contact you soon.");
     }

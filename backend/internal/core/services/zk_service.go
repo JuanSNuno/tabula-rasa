@@ -41,7 +41,7 @@ func (s *verifyProofService) Execute(ctx context.Context, sessionID string, proo
 	// 3. Crear Log Efímero
 	hash := sha256.Sum256([]byte(proofPayload))
 	proofHash := hex.EncodeToString(hash[:])
-	
+
 	zkLog := &domain.ZkProofLog{
 		ProofHash:  proofHash,
 		SessionID:  sessionID,

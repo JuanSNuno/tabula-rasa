@@ -33,14 +33,14 @@ func (r *redisMessageRepository) Save(ctx context.Context, message *domain.Messa
 	pipe.RPush(ctx, key, data)
 	// Renovar TTL de la lista completa de mensajes para esta sesión (15 min)
 	pipe.Expire(ctx, key, 15*time.Minute)
-	
+
 	_, err = pipe.Exec(ctx)
 	return err
 }
 
 func (r *redisMessageRepository) GetBySessionID(ctx context.Context, sessionID string) ([]*domain.Message, error) {
 	key := fmt.Sprintf("messages:%s", sessionID)
-	
+
 	// Obtenemos todos los mensajes de la lista
 	dataList, err := r.client.LRange(ctx, key, 0, -1).Result()
 	if err == redis.Nil {

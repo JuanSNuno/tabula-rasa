@@ -48,7 +48,7 @@ Si en algún momento LocalTunnel falla o necesitas otras opciones, existen excel
 
 1. **Cloudflare Quick Tunnels:** Muy estable y segura.
    ```bash
-   npx cloudflared tunnel --url http://localhost:3001
+   npx cloudflared tunnel --url http://localhost:3000
    ```
 2. **Pinggy:** No requiere instalar nada, funciona directamente a través de SSH.
    ```bash

@@ -16,22 +16,71 @@ export default function ExtractionPage() {
 
   const startAttack = () => {
     if (ws.current) return;
-    ws.current = new WebSocket(
-      "ws://localhost:8080/ws/v1/ops/extraction/proj-attacker"
-    );
-    ws.current.onopen = () => setActive(true);
-    ws.current.onmessage = (e) => {
-      const msg = JSON.parse(e.data);
-      setData(msg);
-      setHistory(prev => {
-         const updated = [...prev, { tick: msg.tick, power: msg.jammingPower, coverage: msg.coverage }];
-         return updated.slice(-30); // Keep last 30 ticks
-      });
+    
+    const connectWs = () => {
+      const socket = new WebSocket(
+        "ws://localhost:8080/ws/v1/ops/extraction/proj-attacker"
+      );
+      
+      socket.onopen = () => {
+        setActive(true);
+        ws.current = socket;
+      };
+      
+      socket.onmessage = (e) => {
+        const msg = JSON.parse(e.data);
+        setData(msg);
+        setHistory(prev => {
+           const updated = [...prev, { tick: msg.tick, power: msg.jammingPower, coverage: msg.coverage }];
+           return updated.slice(-30); // Keep last 30 ticks
+        });
+      };
+      
+      socket.onclose = () => {
+        setActive(false);
+        ws.current = null;
+      };
+
+      socket.onerror = () => {
+        console.warn("WebSocket connection failed. Starting DEMO MOCK MODE.");
+        startMockMode();
+      };
     };
-    ws.current.onclose = () => {
-      setActive(false);
-      ws.current = null;
+
+    const startMockMode = () => {
+      setActive(true);
+      let currentTick = 0;
+      const interval = setInterval(() => {
+        currentTick++;
+        const mockData = {
+          tick: currentTick,
+          coverage: Math.min(100, currentTick * 0.8 + Math.random() * 5),
+          camerasCaged: Math.floor(currentTick / 5),
+          jammingPower: Math.floor(180 + Math.random() * 40)
+        };
+        
+        setData(mockData);
+        setHistory(prev => {
+           const updated = [...prev, { tick: mockData.tick, power: mockData.jammingPower, coverage: mockData.coverage }];
+           return updated.slice(-30);
+        });
+
+        if (currentTick >= 130) {
+          clearInterval(interval);
+          setActive(false);
+        }
+      }, 500);
+
+      // Clean up mock interval if component unmounts
+      const cleanup = () => {
+        clearInterval(interval);
+        setActive(false);
+      };
+      // Store cleanup as ws.current dummy
+      (ws.current as any) = { close: cleanup };
     };
+
+    connectWs();
   };
 
   return (

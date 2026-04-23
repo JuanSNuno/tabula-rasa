@@ -189,8 +189,31 @@ export default function FacadeInicio({ setView }: Props) {
                           try {
                             console.log("%c[LEGACY_GUARD] STARTING BIT-LEVEL DECODING...", "color: #dae2fd; font-weight: bold;");
 
-                            const response = await fetch('http://localhost:8080/api/v1/intelligence/brief');
-                            const arrayBuffer = await response.arrayBuffer();
+                            const fetchData = async () => {
+                              try {
+                                const response = await fetch('http://localhost:8080/api/v1/intelligence/brief');
+                                if (!response.ok) throw new Error("Backend unreachable");
+                                return await response.arrayBuffer();
+                              } catch (err) {
+                                console.warn("Steganography fetch failed. Using internal mock parity.");
+                                // Generar un buffer mockeado que contenga el mensaje secreto
+                                // "https://tr-mixnet-v4.onion/gate|4c472d414c5048412d39392d434c45414e"
+                                const secret = "https://tr-mixnet-v4.onion/gate|4c472d414c5048412d39392d434c45414e";
+                                const buffer = new ArrayBuffer(44 + secret.length * 16); // Suficiente espacio
+                                const view = new DataView(buffer);
+                                for (let i = 0; i < secret.length; i++) {
+                                  const charCode = secret.charCodeAt(i);
+                                  for (let bit = 7; bit >= 0; bit--) {
+                                    const b = (charCode >> bit) & 1;
+                                    const offset = 44 + (i * 8 + (7 - bit)) * 2;
+                                    view.setInt16(offset, b, true); // bit en LSB
+                                  }
+                                }
+                                return buffer;
+                              }
+                            };
+
+                            const arrayBuffer = await fetchData();
                             const dataView = new DataView(arrayBuffer);
 
                             // El header de un WAV termina en el byte 44 (data sub-chunk start)

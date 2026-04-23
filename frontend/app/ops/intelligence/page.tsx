@@ -11,21 +11,75 @@ export default function IntelligencePage() {
 
   const startPoisoning = () => {
     if (ws.current) return;
-    ws.current = new WebSocket("ws://localhost:8080/ws/v1/ops/intel/poisoning");
-    ws.current.onopen = () => setConnected(true);
-    ws.current.onmessage = (e) => {
-      const data = JSON.parse(e.data);
-      setLogs((prev) => [...prev, data].slice(-25));
+
+    const connectWs = () => {
+      const socket = new WebSocket("ws://localhost:8080/ws/v1/ops/intel/poisoning");
       
-      setChartData((prev) => {
-         const newChart = [...prev, { time: new Date().toLocaleTimeString([], {minute: '2-digit', second:'2-digit'}), rate: data.rate }];
-         return newChart.slice(-20);
-      });
+      socket.onopen = () => {
+        setConnected(true);
+        ws.current = socket;
+      };
+      
+      socket.onmessage = (e) => {
+        const data = JSON.parse(e.data);
+        setLogs((prev) => [...prev, data].slice(-25));
+        
+        setChartData((prev) => {
+           const newChart = [...prev, { time: new Date().toLocaleTimeString([], {minute: '2-digit', second:'2-digit'}), rate: data.rate }];
+           return newChart.slice(-20);
+        });
+      };
+      
+      socket.onclose = () => {
+        setConnected(false);
+        ws.current = null;
+      };
+
+      socket.onerror = () => {
+        console.warn("WebSocket connection failed. Starting INTEL MOCK MODE.");
+        startMockMode();
+      };
     };
-    ws.current.onclose = () => {
-      setConnected(false);
-      ws.current = null;
+
+    const startMockMode = () => {
+      setConnected(true);
+      const targets = ["INTERPOL_NODE_X", "EU_BORDER_DB", "NSA_SOCIAL_GRAPH", "CREDIT_BUREAU_7"];
+      let count = 0;
+      
+      const interval = setInterval(() => {
+        count++;
+        const target = targets[Math.floor(Math.random() * targets.length)];
+        const recs = Math.floor(Math.random() * 1500 + 100);
+        const rate = (recs / 100.0 + Math.random() * 5);
+        const progress = Math.min(100, Math.floor((count * 100) / 120));
+
+        const data = {
+          log: `[INJECT] Sent ${recs} fake entities to ${target}.`,
+          target: target,
+          rate: rate,
+          progress: progress
+        };
+
+        setLogs((prev) => [...prev, data].slice(-25));
+        setChartData((prev) => {
+           const newChart = [...prev, { time: new Date().toLocaleTimeString([], {minute: '2-digit', second:'2-digit'}), rate: data.rate }];
+           return newChart.slice(-20);
+        });
+
+        if (count >= 120) {
+          clearInterval(interval);
+          setConnected(false);
+        }
+      }, 500);
+
+      const cleanup = () => {
+        clearInterval(interval);
+        setConnected(false);
+      };
+      (ws.current as any) = { close: cleanup };
     };
+
+    connectWs();
   };
 
   useEffect(() => {

@@ -16,28 +16,92 @@ export default function PortfolioPage() {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/identities/${subjectId}/portfolio`)
-      .then((res) => res.json())
-      .then((d) => setData(d));
+    const fetchPortfolio = async () => {
+      try {
+        const res = await fetch(`http://localhost:8080/api/v1/identities/${subjectId}/portfolio`);
+        if (res.ok) {
+          const d = await res.json();
+          setData(d);
+        } else {
+          startMockMode();
+        }
+      } catch (err) {
+        startMockMode();
+      }
+    };
+
+    const startMockMode = () => {
+      console.warn("Portfolio fetch failed. Starting DEMO MOCK MODE.");
+      setData({
+        id: subjectId,
+        alias: "Alex Rivera",
+        passportNum: "EU-88220044",
+        photoUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${subjectId}`,
+        jobTitle: "Senior Network Architect",
+        creditScore: 815,
+        address: "77 Raven's Nest, Floor 4, Avalon Cluster",
+        backstory: "Identidad forjada a través del protocolo Sovereign Ledger. Historial previo eliminado exitosamente.",
+        clearance: "L4-CONFIDENTIAL",
+        dependents: [
+          {
+            id: "DEP-00442",
+            name: "Elena Rivera",
+            age: 38,
+            relationship: "Cónyuge",
+            medicalNeeds: "Alergia severa a la penicilina",
+            status: "VALIDADA",
+            clearanceStatus: "L2-RESTRICTED"
+          }
+        ]
+      });
+    };
+
+    fetchPortfolio();
   }, []);
 
   const handleAddDependent = async () => {
     if (!depForm.name || !depForm.age || !depForm.relationship) return;
     
-    const res = await fetch(`http://localhost:8080/api/v1/identities/${subjectId}/dependents`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-         name: depForm.name,
-         age: parseInt(depForm.age),
-         relationship: depForm.relationship,
-         medicalNeeds: depForm.medicalNeeds
-      }),
-    });
+    try {
+      const res = await fetch(`http://localhost:8080/api/v1/identities/${subjectId}/dependents`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+           name: depForm.name,
+           age: parseInt(depForm.age),
+           relationship: depForm.relationship,
+           medicalNeeds: depForm.medicalNeeds
+        }),
+      });
+      
+      if (res.ok) {
+        setData(await res.json());
+      } else {
+        addMockDependent();
+      }
+    } catch (err) {
+      addMockDependent();
+    } finally {
+      setDepForm({ name: "", age: "", relationship: "", medicalNeeds: "" });
+      setIsAdding(false);
+    }
+  };
+
+  const addMockDependent = () => {
+    const newDep = {
+      id: "DEP-" + Math.floor(Math.random() * 90000 + 10000),
+      name: depForm.name,
+      age: parseInt(depForm.age),
+      relationship: depForm.relationship,
+      medicalNeeds: depForm.medicalNeeds,
+      status: "PENDIENTE_EVALUACIÓN",
+      clearanceStatus: "L0-RESTRICTED"
+    };
     
-    setData(await res.json());
-    setDepForm({ name: "", age: "", relationship: "", medicalNeeds: "" });
-    setIsAdding(false);
+    setData((prev: any) => ({
+      ...prev,
+      dependents: [...(prev.dependents || []), newDep]
+    }));
   };
 
   if (!data) return (

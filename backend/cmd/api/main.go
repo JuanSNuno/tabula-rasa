@@ -39,6 +39,7 @@ func main() {
 	createSessionUC := services.NewCreateSessionService(sessionRepo)
 	verifyProofUC := services.NewVerifyProofService(sessionRepo, zkLogRepo)
 	routeMessageUC := services.NewRouteMessageService(sessionRepo, messageRepo)
+	grantAccessPassUC := services.NewGrantAccessPassService(sessionRepo)
 
 	// 4. Inicializar HTTP Framework y Handlers (Adaptadores de Red)
 	app := fiber.New(fiber.Config{
@@ -52,7 +53,7 @@ func main() {
 	}))
 
 	// Montar rutas
-	httpHandler := handlers.NewHttpHandler(createSessionUC, verifyProofUC, routeMessageUC)
+	httpHandler := handlers.NewHttpHandler(createSessionUC, verifyProofUC, routeMessageUC, grantAccessPassUC)
 	httpHandler.RegisterRoutes(app)
 
 	// 5. Arranque y Graceful Shutdown

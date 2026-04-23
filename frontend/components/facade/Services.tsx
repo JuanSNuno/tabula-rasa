@@ -11,15 +11,15 @@ export default function FacadeServicios({ setView }: Props) {
     <>
       {/* TopNavBar */}
       <nav className="w-full top-0 z-50 bg-[#f7f9fb] shadow-none duration-200 ease-in-out">
-        <div className="flex items-center justify-between px-8 py-4 max-w-full">
+        <div className="flex flex-wrap md:flex-nowrap items-center justify-between px-6 md:px-8 py-4 gap-y-4 max-w-full">
           <div className="text-xl font-bold tracking-tighter text-on-surface font-headline">LegacyGuard</div>
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="flex w-full justify-center md:w-auto order-last md:order-none items-center space-x-6 md:space-x-8">
             <button onClick={() => setView('home')} className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-on-surface transition-colors">Inicio</button>
             <button onClick={() => setView('services')} className="font-inter text-sm font-medium tracking-tight text-on-surface border-b-2 border-primary pb-1">Servicios</button>
             <button onClick={() => setView('support')} className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-on-surface transition-colors">Soporte</button>
           </div>
-          <div className="flex items-center space-x-4">
-            <button className="px-4 py-2 font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:bg-surface-container-low rounded transition-colors">Acceso de Cliente</button>
+          <div className="flex items-center space-x-2 md:space-x-4">
+            <button className="hidden sm:block px-4 py-2 font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:bg-surface-container-low rounded transition-colors">Acceso de Cliente</button>
             <button className="px-4 py-2 font-inter text-sm font-medium tracking-tight bg-primary text-on-primary rounded shadow-sm hover:brightness-110 transition-all">Solicitud de Auditoría</button>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function FacadeServicios({ setView }: Props) {
             </div>
           </div>
 
-          <div className="md:col-span-12 lg:col-span-6 bg-surface-container-high p-12 flex flex-col justify-center">
+          <div className="md:col-span-12 lg:col-span-6 bg-surface-container-high p-8 md:p-12 flex flex-col justify-center">
             <h3 className="text-xs font-bold text-outline tracking-[0.2em] uppercase mb-10 font-label">Métricas de Confianza de Red</h3>
             <div className="grid grid-cols-2 gap-8">
               <div className="space-y-2">

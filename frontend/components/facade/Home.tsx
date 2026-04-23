@@ -12,17 +12,17 @@ export default function FacadeInicio({ setView }: Props) {
   return (
     <>
       <header className="w-full top-0 z-50 bg-[#f7f9fb] duration-200 ease-in-out">
-        <nav className="flex items-center justify-between px-8 py-4 max-w-full">
+        <nav className="flex flex-wrap md:flex-nowrap items-center justify-between px-6 md:px-8 py-4 gap-y-4 max-w-full">
           <div className="text-xl font-bold tracking-tighter text-on-surface font-headline">
             LegacyGuard
           </div>
-          <div className="hidden md:flex items-center space-x-8 font-inter text-sm font-medium tracking-tight">
+          <div className="flex w-full justify-center md:w-auto order-last md:order-none items-center space-x-6 md:space-x-8 font-inter text-sm font-medium tracking-tight">
             <button onClick={() => setView('home')} className="text-on-surface border-b-2 border-primary pb-1">Inicio</button>
             <button onClick={() => setView('services')} className="text-on-surface-variant hover:text-on-surface transition-colors">Servicios</button>
             <button onClick={() => setView('support')} className="text-on-surface-variant hover:text-on-surface transition-colors">Soporte</button>
           </div>
-          <div className="flex items-center space-x-4">
-            <button className="px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low rounded">Acceso de Cliente</button>
+          <div className="flex items-center space-x-2 md:space-x-4">
+            <button className="hidden sm:block px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low rounded">Acceso de Cliente</button>
             <button className="px-4 py-2 bg-primary text-on-primary text-sm font-semibold rounded shadow-sm hover:opacity-90 transition-opacity">Solicitud de Auditoría</button>
           </div>
         </nav>
@@ -96,7 +96,7 @@ export default function FacadeInicio({ setView }: Props) {
         </section>
 
         {/* Bento Grid */}
-        <section className="py-24 px-8 bg-surface">
+        <section className="py-16 md:py-24 px-6 md:px-8 bg-surface">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
               <h2 className="text-3xl font-extrabold tracking-tight text-on-surface mb-2 font-headline">Ecosistema de Auditoría</h2>

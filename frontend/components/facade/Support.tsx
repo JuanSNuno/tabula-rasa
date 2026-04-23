@@ -33,15 +33,15 @@ export default function FacadeSoporte({ setView }: Props) {
 
   return (
     <>
-      <nav className="w-full top-0 z-50 bg-[#f7f9fb] flex items-center justify-between px-8 py-4 max-w-full">
+      <nav className="w-full top-0 z-50 bg-[#f7f9fb] flex flex-wrap md:flex-nowrap items-center justify-between px-6 md:px-8 py-4 gap-y-4 max-w-full">
         <div className="text-xl font-bold tracking-tighter text-on-surface font-headline">LegacyGuard</div>
-        <div className="hidden md:flex items-center space-x-8 font-inter text-sm font-medium tracking-tight">
+        <div className="flex w-full justify-center md:w-auto order-last md:order-none items-center space-x-6 md:space-x-8 font-inter text-sm font-medium tracking-tight">
           <button onClick={() => setView('home')} className="text-on-surface-variant hover:text-on-surface transition-colors duration-200">Inicio</button>
           <button onClick={() => setView('services')} className="text-on-surface-variant hover:text-on-surface transition-colors duration-200">Servicios</button>
           <button onClick={() => setView('support')} className="text-on-surface border-b-2 border-primary pb-1 duration-200">Soporte</button>
         </div>
-        <div className="flex items-center space-x-4">
-          <button className="px-4 py-2 font-inter text-sm font-medium text-on-surface-variant hover:bg-surface-container-low duration-200">Acceso de Cliente</button>
+        <div className="flex items-center space-x-2 md:space-x-4">
+          <button className="hidden sm:block px-4 py-2 font-inter text-sm font-medium text-on-surface-variant hover:bg-surface-container-low duration-200">Acceso de Cliente</button>
           <button className="px-4 py-2 bg-primary text-on-primary rounded font-inter text-sm font-medium hover:bg-primary-dim transition-colors duration-200">Solicitud de Auditoría</button>
         </div>
       </nav>
@@ -144,7 +144,7 @@ export default function FacadeSoporte({ setView }: Props) {
       </main>
 
       <footer className="bg-surface-dim w-full border-t border-outline-variant/20">
-        <div className="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full">
+        <div className="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 py-8 w-full">
           <div className="text-lg font-black text-on-surface mb-6 md:mb-0 font-headline">Sistemas LegacyGuard</div>
           <div className="flex flex-wrap justify-center gap-8 font-inter text-xs tracking-wide uppercase font-semibold">
             <a className="text-on-surface-variant hover:text-on-surface transition-opacity opacity-80 hover:opacity-100" href="#">Política de Privacidad</a>

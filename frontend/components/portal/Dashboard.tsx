@@ -34,6 +34,8 @@ export default function PortalDashboard() {
   const [loading, setLoading] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   // Initialize Anonymous Session
   useEffect(() => {
     const initSession = async () => {
@@ -259,84 +261,92 @@ export default function PortalDashboard() {
   };
 
   return (
-    <div className="bg-[#0a0a0c] text-on-background h-screen w-screen overflow-hidden flex flex-col font-mono selection:bg-primary selection:text-on-primary">
+    <div className="bg-[#0a0a0c] text-on-background min-h-screen md:h-screen w-full md:overflow-hidden flex flex-col font-mono selection:bg-primary selection:text-on-primary">
       {/* TopNavBar */}
-      <header className="fixed top-0 w-full z-50 bg-[#0e0e10] border-b border-outline-variant/20 flex justify-between items-center px-6 h-12">
-        <div className="flex items-center gap-4">
-          <span className="font-bold tracking-widest text-primary text-sm uppercase">PORTAL_DE_EXTRACCIÓN_V.04</span>
+      <header className="fixed top-0 w-full z-50 bg-[#0e0e10] border-b border-outline-variant/20 flex justify-between items-center px-4 md:px-6 h-12">
+        <div className="flex items-center gap-2 md:gap-4">
+          <button className="md:hidden text-primary flex items-center justify-center" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <span className="material-symbols-outlined text-sm">{isMobileMenuOpen ? 'close' : 'menu'}</span>
+          </button>
+          <span className="font-bold tracking-widest text-primary text-[10px] md:text-sm uppercase truncate max-w-[120px] md:max-w-none">PORTAL_DE_EXTRACCIÓN_V.04</span>
           {isZkVerified && (
-            <span className="text-tertiary-container animate-pulse flex items-center gap-2 text-xs uppercase">
+            <span className="text-tertiary-container animate-pulse hidden sm:flex items-center gap-2 text-[10px] md:text-xs uppercase">
               <span className="w-1.5 h-1.5 bg-tertiary-container"></span>
               ESTADO: CONDUCTO SEGURO ESTABLECIDO
             </span>
           )}
         </div>
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-3 text-xs uppercase">
+        <div className="flex items-center gap-3 md:gap-6">
+          <div className="hidden sm:flex items-center gap-3 text-[10px] md:text-xs uppercase">
             <span className="text-on-surface-variant">ID_DE_SESIÓN:</span>
             <span className="text-primary">[{sessionId ? sessionId.substring(0, 13) + '...' : 'NEGOCIANDO'}]</span>
           </div>
           {/* Banner del Pase de Acceso Temporal en el header */}
           {accessPass && (
-            <div className="flex items-center gap-2 border border-primary/40 bg-primary/10 px-3 py-1 rounded-sm">
-              <span className="material-symbols-outlined text-primary text-xs">key</span>
-              <span className="text-[10px] text-primary font-bold uppercase tracking-widest">PASE: {accessPass.toUpperCase()}</span>
-              <span className="text-[10px] text-on-surface-variant">TTL: {passCountdown}</span>
+            <div className="flex items-center gap-1 md:gap-2 border border-primary/40 bg-primary/10 px-2 py-0.5 md:px-3 md:py-1 rounded-sm">
+              <span className="material-symbols-outlined text-primary text-[10px] md:text-xs">key</span>
+              <span className="text-[9px] md:text-[10px] text-primary font-bold uppercase tracking-widest truncate max-w-[60px] md:max-w-none">PASE: {accessPass.toUpperCase()}</span>
+              <span className="text-[9px] md:text-[10px] text-on-surface-variant hidden sm:inline">TTL: {passCountdown}</span>
             </div>
           )}
-          <div className="flex gap-4">
-            <span className="material-symbols-outlined text-primary text-sm">sensors</span>
-            <span className="material-symbols-outlined text-primary text-sm">security</span>
-            <span className="material-symbols-outlined text-primary text-sm">terminal</span>
+          <div className="flex gap-2 md:gap-4">
+            <span className="material-symbols-outlined text-primary text-xs md:text-sm">sensors</span>
+            <span className="material-symbols-outlined text-primary text-xs md:text-sm hidden sm:block">security</span>
+            <span className="material-symbols-outlined text-primary text-xs md:text-sm">terminal</span>
           </div>
         </div>
       </header>
 
-      <div className="flex flex-1 pt-12 overflow-hidden height-[calc(100vh-3rem)]">
+      <div className="flex flex-1 pt-12 pb-6 md:overflow-hidden h-full">
         {/* SideNavBar */}
-        <nav className="fixed left-0 top-12 h-full w-64 flex flex-col bg-[#0e0e10] border-r border-outline-variant/20 text-xs tracking-tight">
-          <div className="p-4 border-b border-outline-variant/20 bg-surface-container-low/50">
-            <div className="font-black text-primary text-base uppercase">OP_09</div>
-            <div className="text-on-surface-variant uppercase">SECTOR_7</div>
+        <nav className={`fixed md:left-0 top-12 h-[calc(100vh-3rem-1.5rem)] md:h-full w-64 flex flex-col bg-[#0e0e10] border-r border-outline-variant/20 text-xs tracking-tight z-40 transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+          <div className="p-4 border-b border-outline-variant/20 bg-surface-container-low/50 flex justify-between items-center">
+            <div>
+              <div className="font-black text-primary text-base uppercase">OP_09</div>
+              <div className="text-on-surface-variant uppercase">SECTOR_7</div>
+            </div>
+            <button className="md:hidden text-on-surface-variant" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined text-sm">close</span>
+            </button>
           </div>
-          <div className="flex flex-col py-2 uppercase">
+          <div className="flex flex-col py-2 uppercase overflow-y-auto">
             <button
-              onClick={() => setActiveTab('DASHBOARD')}
+              onClick={() => { setActiveTab('DASHBOARD'); setIsMobileMenuOpen(false); }}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'DASHBOARD' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">grid_view</span>
               RESUMEN
             </button>
             <button
-              onClick={() => setActiveTab('CRYPTO_VAL')}
+              onClick={() => { setActiveTab('CRYPTO_VAL'); setIsMobileMenuOpen(false); }}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'CRYPTO_VAL' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">qr_code_2</span>
               VAL_SEGURA
             </button>
             <button
-              onClick={() => setActiveTab('AUDIT')}
+              onClick={() => { setActiveTab('AUDIT'); setIsMobileMenuOpen(false); }}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'AUDIT' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">history_edu</span>
               AUDIT_VIDA_PASADA
             </button>
             <button
-              onClick={() => setActiveTab('EVAC_ROUTE')}
+              onClick={() => { setActiveTab('EVAC_ROUTE'); setIsMobileMenuOpen(false); }}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'EVAC_ROUTE' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">route</span>
               RUTA_EVAC
             </button>
             <button
-              onClick={() => setActiveTab('COMM_LINK')}
+              onClick={() => { setActiveTab('COMM_LINK'); setIsMobileMenuOpen(false); }}
               className={`flex items-center gap-3 px-6 py-4 transition-all ${activeTab === 'COMM_LINK' ? 'bg-primary text-on-primary-container font-black' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
             >
               <span className="material-symbols-outlined text-sm">chat_bubble</span>
               ENLACE_COM
             </button>
           </div>
-          <div className="mt-auto p-4 pb-16 border-t border-outline-variant/20">
+          <div className="mt-auto p-4 pb-16 md:pb-6 border-t border-outline-variant/20">
             <div className="flex items-center gap-3 uppercase">
               <div className="w-8 h-8 bg-surface-container-high flex items-center justify-center">
                 <span className="material-symbols-outlined text-on-surface-variant">person</span>
@@ -349,10 +359,18 @@ export default function PortalDashboard() {
           </div>
         </nav>
 
+        {/* Overlay for mobile menu */}
+        {isMobileMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black/50 z-30 md:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
+        )}
+
         {/* Main Content Area */}
-        <main className="ml-64 w-full h-full flex overflow-hidden bg-surface">
+        <main className="md:ml-64 w-full flex-1 flex flex-col md:flex-row md:overflow-hidden bg-surface">
           {/* Left Panel: Dynamic Content */}
-          <section className={`w-1/2 border-r border-outline-variant/20 flex flex-col p-12 overflow-y-auto custom-scrollbar bg-[#0a0a0c]`}>
+          <section className={`w-full md:w-1/2 min-h-[70vh] md:min-h-0 md:h-full border-b md:border-b-0 md:border-r border-outline-variant/20 flex flex-col p-4 sm:p-8 md:p-12 overflow-y-auto custom-scrollbar bg-[#0a0a0c]`}>
 
             {/* AUDIT VIEW (Sujeto en Riesgo) */}
             {activeTab === 'AUDIT' && (
@@ -371,7 +389,7 @@ export default function PortalDashboard() {
 
             {/* CRYPTO_VAL VIEW (El Magnate) */}
             {activeTab === 'CRYPTO_VAL' && (
-              <div className="w-full max-w-md mx-auto flex flex-col gap-12 pt-12 animate-in slide-in-from-top duration-500">
+              <div className="w-full max-w-md mx-auto flex flex-col gap-6 md:gap-12 pt-6 md:pt-12 animate-in slide-in-from-top duration-500">
                 <div className="flex justify-between items-end border-b border-outline-variant/30 pb-6">
                   <h2 className="text-xs font-black text-primary tracking-[0.3em] uppercase">PRUEBA DE ANTECEDENTES LIMPIOS (ZKP)</h2>
                   <span className="text-[10px] text-on-surface-variant font-bold uppercase">ANONYMOUS_VER_4.9</span>
@@ -511,14 +529,14 @@ export default function PortalDashboard() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="p-6 border border-outline-variant/20 bg-surface-container-low flex flex-col gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                  <div className="p-4 md:p-6 border border-outline-variant/20 bg-surface-container-low flex flex-col gap-4">
                     <span className="material-symbols-outlined text-primary text-3xl">history_edu</span>
                     <h4 className="text-xs font-bold text-on-surface uppercase">Rastros no Verificados</h4>
                     <span className="text-2xl font-black text-primary">05 DETECTADOS</span>
                     <button onClick={() => setActiveTab('AUDIT')} className="text-[10px] text-primary font-bold uppercase hover:underline text-left">IR AL MANTO DE AUDITORÍA</button>
                   </div>
-                  <div className="p-6 border border-outline-variant/20 bg-surface-container-low flex flex-col gap-4">
+                  <div className="p-4 md:p-6 border border-outline-variant/20 bg-surface-container-low flex flex-col gap-4">
                     <span className="material-symbols-outlined text-primary text-3xl">verified_user</span>
                     <h4 className="text-xs font-bold text-on-surface uppercase">Autorización Anónima</h4>
                     <span className={`text-2xl font-black ${isZkVerified ? 'text-primary' : 'text-on-surface-variant'}`}>{isZkVerified ? 'VALIDADO' : 'PENDIENTE'}</span>
@@ -542,7 +560,7 @@ export default function PortalDashboard() {
 
             {/* COMM_LINK VIEW — Consola de Chat Efímera Anti-Rastro (Prospecto Validado) */}
             {activeTab === 'COMM_LINK' && (
-              <div className="h-full flex flex-col animate-in fade-in duration-200 overflow-hidden">
+              <div className="flex-1 flex flex-col animate-in fade-in duration-200 overflow-hidden min-h-[400px] md:min-h-0">
 
                 {/* Console header */}
                 <div className="flex items-center justify-between border-b border-outline-variant/20 pb-4 mb-4 flex-shrink-0">
@@ -661,7 +679,7 @@ export default function PortalDashboard() {
           </section>
 
           {/* Right Panel: Mixnet Chat (Always visible but can be expanded) */}
-          <section className="w-1/2 flex flex-col bg-[#0a0a0c] overflow-hidden border-l border-outline-variant/10">
+          <section className="w-full md:w-1/2 min-h-[60vh] md:min-h-0 md:h-full flex flex-col bg-[#0a0a0c] overflow-hidden">
             <div className="h-12 border-b border-outline-variant/20 flex items-center justify-between px-6 bg-[#0e0e10]">
               <div className="flex items-center gap-3 text-primary">
                 <span className="material-symbols-outlined text-sm">chat_bubble</span>
@@ -675,7 +693,7 @@ export default function PortalDashboard() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6 flex flex-col">
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-6 space-y-4 md:space-y-6 flex flex-col">
               {!isZkVerified || !accessPass ? (
                 <div className="flex-1 flex flex-col items-center justify-center opacity-50 space-y-4">
                   <span className="material-symbols-outlined text-4xl text-on-surface-variant">lock</span>
@@ -741,13 +759,13 @@ export default function PortalDashboard() {
       </div>
 
       {/* System Status Bar */}
-      <footer className="fixed bottom-0 w-full h-6 bg-[#0e0e10] border-t border-outline-variant/20 z-50 flex items-center justify-between px-6 text-[9px] text-on-surface-variant uppercase">
-        <div className="flex items-center gap-4">
+      <footer className="fixed bottom-0 w-full h-6 bg-[#0e0e10] border-t border-outline-variant/20 z-50 flex items-center justify-between px-2 md:px-6 text-[8px] md:text-[9px] text-on-surface-variant uppercase">
+        <div className="flex items-center gap-2 md:gap-4">
           <span className="flex items-center gap-1"><span className="w-1 h-1 bg-tertiary-container"></span> CPU: 12%</span>
           <span className="flex items-center gap-1"><span className="w-1 h-1 bg-tertiary-container"></span> MEM: 4.2GB</span>
         </div>
-        <div className="flex items-center gap-4 font-bold">
-          <span className="text-secondary tracking-widest">CIFRADO: AES-256-GCM</span>
+        <div className="flex items-center gap-2 md:gap-4 font-bold">
+          <span className="text-secondary tracking-widest hidden sm:inline">CIFRADO: AES-256-GCM</span>
           <span className="text-primary tracking-widest">CONDUCTO_ESTABLE</span>
         </div>
       </footer>

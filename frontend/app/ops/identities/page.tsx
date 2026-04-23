@@ -43,9 +43,9 @@ export default function IdentitiesPage() {
   };
 
   return (
-    <div className="flex h-screen bg-[#0a0512] font-mono text-purple-200">
+    <div className="flex flex-col md:flex-row h-screen bg-[#0a0512] font-mono text-purple-200 overflow-hidden">
       {/* SIDEBAR */}
-      <aside className="w-80 flex flex-col bg-[#05020a] border-r border-purple-900/40 shadow-2xl z-10 font-mono">
+      <aside className="w-full md:w-80 flex flex-col bg-[#05020a] border-b md:border-b-0 md:border-r border-purple-900/40 shadow-2xl z-10 font-mono shrink-0 hidden md:flex">
         <div className="p-6 border-b border-purple-900/30 flex items-center justify-between">
           <h1 className="text-xl font-black tracking-widest text-purple-500 uppercase">TABULA_RASA</h1>
           <Fingerprint className="text-purple-600 w-6 h-6" />

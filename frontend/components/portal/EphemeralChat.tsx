@@ -83,7 +83,7 @@ export default function EphemeralChat({ sessionId }: EphemeralChatProps) {
   };
 
   return (
-    <div className="flex flex-col h-[600px] border border-red-900 bg-black font-mono text-sm max-w-3xl mx-auto rounded-lg overflow-hidden shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+    <div className="flex flex-col h-[400px] md:h-[600px] border border-red-900 bg-black font-mono text-sm max-w-3xl mx-auto rounded-lg overflow-hidden shadow-[0_0_15px_rgba(220,38,38,0.3)] w-full">
       <div className="bg-red-950 text-red-500 p-2 border-b border-red-900 flex justify-between">
         <span>Túnel Mixnet [ACTIVO]</span>
         <span className="animate-pulse">TTL: 15m</span>

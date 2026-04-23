@@ -110,9 +110,9 @@ export default function IntelligencePage() {
             </div>
 
             {/* LIVE TELEMETRY GRAPHS */}
-            <div className="grid grid-cols-3 gap-6 h-64 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-64 mb-4">
                {/* Left Stat Box */}
-               <div className="bg-black border border-green-900/50 rounded-lg shadow-2xl p-6 flex flex-col justify-center items-center relative">
+               <div className="bg-black border border-green-900/50 rounded-lg shadow-2xl p-6 flex flex-col justify-center items-center relative min-h-[200px] md:min-h-0">
                   <div className="absolute top-0 right-0 p-2 text-green-900 opacity-20">
                      <span className="material-symbols-outlined text-6xl">blur_on</span>
                   </div>

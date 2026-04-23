@@ -71,7 +71,7 @@ export default function TracesList() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-6 p-4 bg-surface-container-lowest/30 rounded-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 bg-surface-container-lowest/30 rounded-sm">
                             <div className="space-y-2 border-r border-outline-variant/10">
                                 <div className="text-[10px] text-on-surface-variant font-bold uppercase">Matriz de Persistencia:</div>
                                 <div className="text-sm text-primary font-black tracking-widest">ALTA [REPLICADO]</div>

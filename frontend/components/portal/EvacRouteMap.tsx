@@ -100,9 +100,9 @@ export default function EvacRouteMap({ messages = [] }: EvacRouteMapProps) {
         </div>
       </div>
 
-      <div className="flex gap-6 h-[500px]">
+      <div className="flex flex-col md:flex-row gap-6 h-auto md:h-[500px]">
         {/* Left Side: SVG Map Render */}
-        <div className="w-2/3 bg-[#050505] border border-outline-variant/30 relative overflow-hidden flex items-center justify-center">
+        <div className="w-full md:w-2/3 bg-[#050505] border border-outline-variant/30 relative overflow-hidden flex items-center justify-center min-h-[300px] md:min-h-0">
           {/* Overlay grid lines for tactical feel */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
 

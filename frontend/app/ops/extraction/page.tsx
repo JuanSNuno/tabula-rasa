@@ -97,7 +97,7 @@ export default function ExtractionPage() {
       </aside>
 
       {/* MAIN VIEW */}
-      <main className="flex-1 flex flex-col relative overflow-hidden">
+      <main className="flex-1 flex flex-col relative overflow-y-auto md:overflow-hidden h-full">
         {/* Grid Background Effect */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')] opacity-5 pointer-events-none"></div>
 
@@ -201,7 +201,7 @@ export default function ExtractionPage() {
             </div>
 
             {/* Bottom Targets Stats */}
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                <div className="bg-red-950/20 border border-red-900/50 rounded-lg p-6 flex flex-col items-center">
                   <span className="material-symbols-outlined text-red-800 text-4xl mb-2">videocam_off</span>
                   <p className="text-[10px] text-red-700 font-bold uppercase tracking-widest text-center">Cámaras Cegadas</p>

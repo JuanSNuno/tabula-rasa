@@ -61,7 +61,7 @@ export default function PortalDashboard() {
       setIdProgress(Math.round(((i + 1) / steps.length) * 100));
     }
     try {
-      const res = await fetch("http://localhost:8080/api/v1/ops/identities/scaffold", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/ops/identities/scaffold`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ seed }),
@@ -119,7 +119,7 @@ export default function PortalDashboard() {
   useEffect(() => {
     const initSession = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/v1/session', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/session`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ publicKey: 'mock_pgp_public_key' })
@@ -147,7 +147,7 @@ export default function PortalDashboard() {
 
     const fetchMessages = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/v1/messages/${sessionId}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}`}/api/v1/messages/${sessionId}`);
         if (res.ok) {
           const data: Message[] = await res.json();
           setMessages(data || []);
@@ -250,7 +250,7 @@ export default function PortalDashboard() {
   const grantAccessPass = async (verifiedSessionId: string) => {
     setPassGrantError(null);
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/session/${verifiedSessionId}/grant-pass`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}`}/api/v1/session/${verifiedSessionId}/grant-pass`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -285,7 +285,7 @@ export default function PortalDashboard() {
 
     setTimeout(async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/v1/verify', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/verify`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -327,7 +327,7 @@ export default function PortalDashboard() {
     
     try {
       const encrypted = `ENC_` + btoa(sentText);
-      const res = await fetch('http://localhost:8080/api/v1/messages', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

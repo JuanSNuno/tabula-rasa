@@ -19,7 +19,7 @@ export default function ExtractionPage() {
     
     const connectWs = () => {
       const socket = new WebSocket(
-        "ws://localhost:8080/ws/v1/ops/extraction/proj-attacker"
+        `${process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8080"}/ws/v1/ops/extraction/proj-attacker`
       );
       
       socket.onopen = () => {

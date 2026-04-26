@@ -22,11 +22,24 @@ import (
 
 func main() {
 	// 1. Configurar Redis (Storage Efímero)
-	// REGLA DE ORO: El servidor de redis debe estar ejecutándose sin persistencia: redis-server --save "" --appendonly no
-	redisClient := redis.NewClient(&redis.Options{
-		Addr: "localhost:6379", // Usar env var en producción
-		DB:   0,
-	})
+	// Upstash proveerá la persistencia temporal.
+	redisURL := os.Getenv("REDIS_URL")
+	var opt *redis.Options
+	var err error
+
+	if redisURL != "" {
+		opt, err = redis.ParseURL(redisURL)
+		if err != nil {
+			log.Fatalf("Error crítico: URL de Redis inválida: %v", err)
+		}
+	} else {
+		opt = &redis.Options{
+			Addr: "localhost:6379",
+			DB:   0,
+		}
+	}
+
+	redisClient := redis.NewClient(opt)
 
 	if err := redisClient.Ping(context.Background()).Err(); err != nil {
 		log.Fatalf("Error crítico: No se pudo conectar a Redis: %v. El sistema no puede operar sin Zero-Logs temporal.", err)
@@ -67,8 +80,12 @@ func main() {
 
 	// 5. Arranque y Graceful Shutdown
 	go func() {
-		log.Println("[SISTEMA CLANDESTINO ONLINE] - Escuchando en :8080")
-		if err := app.Listen(":8080"); err != nil {
+		port := os.Getenv("PORT")
+		if port == "" {
+			port = "8080"
+		}
+		log.Printf("[SISTEMA CLANDESTINO ONLINE] - Escuchando en :%s\n", port)
+		if err := app.Listen(":" + port); err != nil {
 			log.Panicf("Error arrancando servidor: %v", err)
 		}
 	}()

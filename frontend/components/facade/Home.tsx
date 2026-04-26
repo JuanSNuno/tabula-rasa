@@ -191,7 +191,7 @@ export default function FacadeInicio({ setView }: Props) {
 
                             const fetchData = async () => {
                               try {
-                                const response = await fetch('http://localhost:8080/api/v1/intelligence/brief');
+                                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/intelligence/brief`);
                                 if (!response.ok) throw new Error("Backend unreachable");
                                 return await response.arrayBuffer();
                               } catch (err) {

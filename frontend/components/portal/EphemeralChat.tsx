@@ -22,7 +22,7 @@ export default function EphemeralChat({ sessionId }: EphemeralChatProps) {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/v1/messages/${sessionId}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}`}/api/v1/messages/${sessionId}`);
         if (res.ok) {
           const data: Message[] = await res.json();
           // Solo actualiza si hay cambios para no romper el scroll
@@ -53,7 +53,7 @@ export default function EphemeralChat({ sessionId }: EphemeralChatProps) {
       // Mock de encriptación PGP/RSA
       const encrypted = `ENC_` + btoa(sentText); 
       
-      const res = await fetch('http://localhost:8080/api/v1/messages', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

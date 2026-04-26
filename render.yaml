@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: tabula-rasa-backend
+    env: docker
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: REDIS_URL
+        sync: false # Deberá ser provisto en el panel web de Render

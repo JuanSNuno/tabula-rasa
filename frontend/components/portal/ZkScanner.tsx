@@ -19,7 +19,7 @@ export default function ZkScanner({ sessionId, onVerified }: ZkScannerProps) {
     setTimeout(async () => {
       try {
         // Enviar proof mockeado a nuestra API de Go
-        const response = await fetch('http://localhost:8080/api/v1/verify', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/verify`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

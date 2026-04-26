@@ -18,7 +18,7 @@ export default function PortfolioPage() {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/v1/identities/${subjectId}/portfolio`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}`}/api/v1/identities/${subjectId}/portfolio`);
         if (res.ok) {
           const d = await res.json();
           setData(d);
@@ -63,7 +63,7 @@ export default function PortfolioPage() {
     if (!depForm.name || !depForm.age || !depForm.relationship) return;
     
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/identities/${subjectId}/dependents`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}`}/api/v1/identities/${subjectId}/dependents`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

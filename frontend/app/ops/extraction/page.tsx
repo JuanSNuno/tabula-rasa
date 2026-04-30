@@ -84,87 +84,10 @@ export default function ExtractionPage() {
   };
 
   return (
-    <div className="flex h-screen bg-[#070000] font-mono text-red-500">
-      {/* SIDEBAR */}
-      <aside className="w-80 flex flex-col bg-[#050000] border-r border-red-900 shadow-2xl z-10">
-        <div className="p-6 border-b border-red-950 flex items-center justify-between">
-          <h1 className="text-xl font-bold tracking-widest text-red-600">TABULA_RASA</h1>
-          <span className="material-symbols-outlined text-red-900 animate-pulse">crisis_alert</span>
-        </div>
-        
-        {/* PROFILE */}
-        <div className="p-6 border-b border-red-950">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 border border-red-800 bg-red-950/20 rounded flex items-center justify-center">
-                <span className="material-symbols-outlined text-3xl text-red-700">security</span>
-              </div>
-              <div>
-                <h2 className="font-bold tracking-widest text-sm text-red-500">OP: NOMAD</h2>
-                <p className="text-xs uppercase tracking-widest text-red-900">Extracción Táctica</p>
-                <div className="flex items-center gap-1 mt-1">
-                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                  <span className="text-[10px] text-green-700 uppercase font-bold">En Campo [Activo]</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-6 space-y-2 text-xs uppercase tracking-widest text-red-800">
-             <div className="flex justify-between border-b border-red-950 pb-1"><span>Objetivo:</span> <span className="text-red-500">Sujeto_TR-12</span></div>
-             <div className="flex justify-between border-b border-red-950 pb-1"><span>Cuadrícula:</span> <span className="text-red-500">Sector 4, Alpha</span></div>
-             <div className="flex justify-between"><span>Estado:</span> <span className="text-red-500">En Camino</span></div>
-          </div>
-        </div>
-
-        {/* ALERTS */}
-        <div className="flex-1 p-6 overflow-y-auto">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-red-700 mb-4">Comunicaciones Tácticas</h3>
-          <div className="space-y-4">
-            <div className="p-3 border border-red-900 bg-red-950/10 text-xs">
-               <div className="flex justify-between items-center text-red-500 font-bold mb-1">
-                 <span>[ACTUALIZACIÓN] Patrulla UAV</span>
-                 <span className="text-[10px]">12:04</span>
-               </div>
-               <p className="text-red-800">Dron hostil detectado en el sector 4. Prepare interferencia IR.</p>
-            </div>
-            <div className="p-3 border border-red-950 bg-black/50 text-xs">
-               <div className="flex justify-between items-center text-red-700 font-bold mb-1">
-                 <span>[DESPEJADO] Casa de Seguridad B</span>
-                 <span className="text-[10px]">11:45</span>
-               </div>
-               <p className="text-red-900">Perímetro asegurado. Esperando entrega del paquete.</p>
-            </div>
-          </div>
-        </div>
-        
-        {/* LOGOUT */}
-        <div className="p-4 border-t border-red-950">
-           <Link href="/" className="flex items-center justify-center gap-2 w-full py-2 bg-red-950 text-red-500 hover:bg-red-900 hover:text-white transition-colors text-xs font-bold tracking-widest uppercase">
-              Abortar Misión
-           </Link>
-        </div>
-      </aside>
-
-      {/* MAIN VIEW */}
-      <main className="flex-1 flex flex-col relative overflow-y-auto md:overflow-hidden h-full">
-        {/* Grid Background Effect */}
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')] opacity-5 pointer-events-none"></div>
-
-        <header className="p-6 flex items-center justify-between border-b border-red-950 z-10 bg-[#050000]/80 backdrop-blur">
-          <div className="flex gap-6 text-xs uppercase font-bold tracking-widest">
-            <span className="text-red-500 border-b-2 border-red-500 pb-1">ProjAttacker (TR-25)</span>
-            <span className="text-red-900 cursor-not-allowed">Transmisión de Vigilancia (Desconectado)</span>
-            <span className="text-red-900 cursor-not-allowed">Enrutamiento y Mapas</span>
-          </div>
-          <div className="text-xs text-red-500 border border-red-900 px-3 py-1 bg-red-950/30">
-            HORA LOCAL: {new Date().toLocaleTimeString()}
-          </div>
-        </header>
-
-        <div className="flex-1 p-10 z-10 overflow-y-auto flex flex-col justify-start">
-          <div className="max-w-6xl w-full mx-auto">
-            <div className="flex justify-between items-end mb-8 border-b border-red-950 pb-4">
-              <div>
+    <div className="p-6 lg:p-10 flex flex-col justify-start min-h-full">
+      <div className="max-w-6xl w-full mx-auto">
+        <div className="flex justify-between items-end mb-8 border-b border-red-950 pb-4">
+          <div>
                 <h2 className="text-4xl font-black tracking-tighter text-red-600 uppercase flex items-center gap-4">
                    <span className="material-symbols-outlined text-4xl">radar</span>
                    Proyecciones Adversarias
@@ -272,7 +195,5 @@ export default function ExtractionPage() {
             </div>
           </div>
         </div>
-      </main>
-    </div>
   );
 }

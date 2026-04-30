@@ -2,11 +2,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer, YAxis, CartesianGrid } from 'recharts';
+import { Terminal, Database, Menu, X } from 'lucide-react';
 
 export default function IntelligencePage() {
   const [logs, setLogs] = useState<any[]>([]);
   const [connected, setConnected] = useState(false);
   const [chartData, setChartData] = useState<{time: string, rate: number}[]>(Array(20).fill({time: '', rate: 0}));
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const ws = useRef<WebSocket | null>(null);
 
   const startPoisoning = () => {
@@ -83,7 +85,6 @@ export default function IntelligencePage() {
   };
 
   useEffect(() => {
-    // Fill initial empty chart
     setChartData(Array.from({length: 20}).map((_, i) => ({
       time: `00:0${i}`,
       rate: 0
@@ -92,8 +93,19 @@ export default function IntelligencePage() {
 
   return (
     <div className="min-h-screen bg-[#050e05] text-green-500 font-mono flex">
+      {/* MOBILE OVERLAY */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-40 lg:hidden" 
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       {/* SIDEBAR: OPERATOR PROFILE */}
-      <aside className="w-72 border-r border-green-900 flex flex-col bg-[#020602]">
+      <aside className={`
+        fixed lg:relative w-72 h-full border-r border-green-900 flex flex-col bg-[#020602] shrink-0 transition-transform duration-300 z-50
+        ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+      `}>
         <div className="p-6 border-b border-green-900">
           <h1 className="text-xl font-bold tracking-widest text-green-400 mb-2">TABULA_RASA</h1>
           <p className="text-xs uppercase tracking-widest text-green-800">SIGINT / Inteligencia de Red</p>
@@ -117,7 +129,7 @@ export default function IntelligencePage() {
         </div>
 
         {/* NOTIFICATIONS */}
-        <div className="p-6 border-b border-green-900 flex-1">
+        <div className="p-6 border-b border-green-900 flex-1 overflow-y-auto">
           <h2 className="text-xs font-bold uppercase tracking-widest mb-4 flex items-center justify-between">
             Alertas Pendientes <span className="bg-green-800 text-black px-2 py-0.5 rounded-sm">2</span>
           </h2>
@@ -143,11 +155,22 @@ export default function IntelligencePage() {
       {/* MAIN CONTENT */}
       <main className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* TOPBAR */}
-        <header className="h-16 border-b border-green-900 flex items-center justify-between px-8 bg-[#020602]/80 backdrop-blur-sm">
-          <div className="flex space-x-8 text-xs uppercase tracking-widest font-bold">
-            <span className="text-green-400 border-b-2 border-green-400 pb-1 cursor-pointer">Envenenamiento de Datos (TR-24)</span>
-            <span className="text-green-800 hover:text-green-600 cursor-not-allowed">Analizador Ing. Social</span>
-            <span className="text-green-800 hover:text-green-600 cursor-not-allowed">Copias Dog Whistling (TR-14)</span>
+        <header className="h-16 border-b border-green-900 flex items-center justify-between px-4 lg:px-8 bg-[#020602]/80 backdrop-blur-sm shrink-0">
+          <div className="flex items-center gap-4">
+             <button 
+               className="lg:hidden text-green-500 p-1 hover:bg-green-900/20 rounded"
+               onClick={() => setIsMobileMenuOpen(true)}
+             >
+               <Menu className="w-6 h-6" />
+             </button>
+             <div className="hidden lg:flex space-x-8 text-xs uppercase tracking-widest font-bold">
+               <Link href="/ops/intelligence" className="text-green-400 border-b-2 border-green-400 pb-1 cursor-pointer">Envenenamiento de Datos</Link>
+               <Link href="/ops/intelligence/social-eng" className="text-green-800 hover:text-green-600 transition-colors cursor-pointer">Analizador Ing. Social</Link>
+               <Link href="/ops/intelligence/dog-whistling" className="text-green-800 hover:text-green-600 transition-colors cursor-pointer">Copias Dog Whistling</Link>
+             </div>
+             <div className="lg:hidden text-xs font-bold uppercase tracking-widest text-green-500">
+                Envenenamiento
+             </div>
           </div>
           <div className="flex items-center gap-2">
              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -155,12 +178,22 @@ export default function IntelligencePage() {
           </div>
         </header>
 
+        {/* MOBILE NAVIGATION TABS */}
+        <div className="lg:hidden flex overflow-x-auto border-b border-green-900 bg-[#020602]/90 z-10 shrink-0 no-scrollbar">
+          <Link href="/ops/intelligence" className="whitespace-nowrap px-4 py-3 text-[10px] uppercase font-bold tracking-widest text-green-400 border-b-2 border-green-400 bg-green-950/20">Envenenamiento</Link>
+          <Link href="/ops/intelligence/social-eng" className="whitespace-nowrap px-4 py-3 text-[10px] uppercase font-bold tracking-widest text-green-800 hover:text-green-500 transition-colors">Ing. Social</Link>
+          <Link href="/ops/intelligence/dog-whistling" className="whitespace-nowrap px-4 py-3 text-[10px] uppercase font-bold tracking-widest text-green-800 hover:text-green-500 transition-colors">Dog Whistling</Link>
+        </div>
+
         {/* WORKSPACE */}
-        <div className="flex-1 p-8 overflow-y-auto">
+        <div className="flex-1 p-4 lg:p-8 overflow-y-auto">
           <div className="max-w-6xl mx-auto flex flex-col gap-6">
             <div className="mb-4">
-              <h2 className="text-3xl font-bold tracking-tighter text-green-400 mb-2">PROTOCOLO DE INYECCIÓN MASIVA DE DATOS</h2>
-              <p className="text-sm text-green-700 max-w-3xl">Despliegue conjuntos de datos corruptos en bases de datos gubernamentales y de vigilancia para crear ruido digital alrededor de objetivos de extracción activos.</p>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tighter text-green-400 mb-2 uppercase flex items-center gap-3">
+                 <Database className="w-8 h-8 md:w-10 md:h-10" />
+                 Protocolo de Inyección Masiva
+              </h2>
+              <p className="text-xs md:text-sm text-green-700 max-w-3xl font-mono">Despliegue conjuntos de datos corruptos en bases de datos gubernamentales y de vigilancia para crear ruido digital alrededor de objetivos de extracción activos.</p>
             </div>
 
             {/* LIVE TELEMETRY GRAPHS */}
@@ -170,8 +203,8 @@ export default function IntelligencePage() {
                   <div className="absolute top-0 right-0 p-2 text-green-900 opacity-20">
                      <span className="material-symbols-outlined text-6xl">blur_on</span>
                   </div>
-                  <p className="text-[10px] text-green-600 font-bold tracking-widest uppercase mb-2">Tasa de Inyección Actual (MB/s)</p>
-                  <p className="text-6xl font-black text-green-400">{logs[logs.length-1]?.rate?.toFixed(1) || "0.0"}</p>
+                  <p className="text-[10px] text-green-600 font-bold tracking-widest uppercase mb-2 text-center">Tasa de Inyección (MB/s)</p>
+                  <p className="text-5xl md:text-6xl font-black text-green-400">{logs[logs.length-1]?.rate?.toFixed(1) || "0.0"}</p>
                   
                   {connected && <div className="mt-4 w-full bg-green-950 h-1.5 rounded-full overflow-hidden">
                      <div className="bg-green-500 h-full w-full animate-[pulse_1s_ease-in-out_infinite] transition-all"></div>
@@ -207,14 +240,14 @@ export default function IntelligencePage() {
             {/* THE TR-24 TERMINAL */}
             <div className="bg-black border border-green-900 rounded-lg shadow-2xl overflow-hidden flex flex-col h-[400px]">
               <div className="bg-green-950 border-b border-green-900 px-4 py-3 flex justify-between items-center">
-                <span className="text-xs font-bold tracking-widest text-green-500 flex items-center gap-2">
-                   <span className="material-symbols-outlined text-[14px]">terminal</span>
+                <span className="text-[10px] md:text-xs font-bold tracking-widest text-green-500 flex items-center gap-2">
+                   <Terminal className="w-4 h-4" />
                    TERMINAL: ROOT@TR-INTEL:~#
                 </span>
                 <button
                   onClick={startPoisoning}
                   disabled={connected}
-                  className={`text-xs px-6 py-2 font-bold uppercase tracking-wider rounded transition-all duration-300 ${
+                  className={`text-[10px] md:text-xs px-6 py-2 font-bold uppercase tracking-wider rounded transition-all duration-300 ${
                     connected
                       ? "bg-green-900/40 text-green-600 cursor-not-allowed border border-green-900/50"
                       : "bg-green-600 text-black hover:bg-green-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.4)]"
@@ -224,7 +257,7 @@ export default function IntelligencePage() {
                 </button>
               </div>
 
-              <div className="flex-1 p-6 overflow-y-auto flex flex-col justify-end text-xs leading-relaxed shadow-inner font-mono">
+              <div className="flex-1 p-6 overflow-y-auto flex flex-col justify-end text-[10px] md:text-xs leading-relaxed shadow-inner font-mono">
                 {logs.length === 0 && !connected && (
                   <div className="text-center text-green-800 my-auto opacity-50 flex flex-col items-center gap-4">
                     <span className="material-symbols-outlined text-6xl">cell_wifi</span>

@@ -58,7 +58,9 @@ export default function FacadeSoporte({ setView }: Props) {
             </p>
             <div className="flex space-x-12 mt-4">
               <div>
-                <p className="text-[10px] uppercase font-bold text-outline tracking-wider mb-2">Estado de Sistemas</p>
+                <p className="text-[10px] uppercase font-bold text-outline tracking-wider mb-2">
+                  Estado de Sistemas <span className="font-mono text-[9px] text-primary block mt-1">SIGINT_Poison_Protocol_Alpha</span>
+                </p>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                   <span className="text-sm font-semibold text-on-surface">Estado Operativo Nominal</span>
@@ -98,7 +100,7 @@ export default function FacadeSoporte({ setView }: Props) {
                     Enviar Ticket
                     <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </button>
-                <p className="text-[10px] text-center text-outline leading-tight mt-4 font-body">
+                <p className="text-[10px] text-center text-outline leading-tight mt-4 font-body" data-encryption-key="SIGINT_Poison_Protocol_Alpha">
                     Todos los envíos están cifrados y registrados en el Libro Mayor Soberano para la auditoría de cumplimiento.
                 </p>
               </form>
@@ -117,10 +119,13 @@ export default function FacadeSoporte({ setView }: Props) {
               <div className="md:col-span-2 bg-surface-container-lowest p-8 flex flex-col justify-between h-64 border-l-4 border-primary">
                 <div>
                   <span className="material-symbols-outlined text-primary mb-4">shield_with_heart</span>
-                  <h4 className="text-lg font-bold text-on-surface font-headline">Libro Blanco de Seguridad</h4>
+                  <h4 className="text-lg font-bold text-on-surface font-headline block">
+                    Libro Blanco de Seguridad
+                    <span className="text-[10px] font-mono text-outline block mt-1">Ref: Forged_Genesis_Block_0x9A</span>
+                  </h4>
                   <p className="text-sm text-on-surface-variant mt-2 max-w-xs font-body">Revise la arquitectura central del motor de auditoría de LegacyGuard y los estándares de cifrado de datos.</p>
                 </div>
-                <a className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1" href="#">Descargar PDF <span className="material-symbols-outlined text-xs">download</span></a>
+                <a className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1" href="#" data-genesis-hash="Forged_Genesis_Block_0x9A">Descargar PDF <span className="material-symbols-outlined text-xs">download</span></a>
               </div>
               <div className="bg-surface-container-lowest p-8 flex flex-col justify-between h-64 border-l-4 border-secondary-dim">
                 <div>

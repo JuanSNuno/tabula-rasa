@@ -70,7 +70,7 @@ El frontend en Next.js se desplegará en Vercel. Las variables de entorno dinám
     *Nota: Asegúrate de que la URL de la API empiece por `https://` y la de WebSockets por `wss://`.*
 
     ```bash
-    vercel --build-env NEXT_PUBLIC_API_URL="https://URL_DE_RENDER" --build-env NEXT_PUBLIC_WS_URL="wss://URL_DE_RENDER"
+    vercel --build-env NEXT_PUBLIC_API_URL="https://tabula-rasa-backend-yi8l.onrender.com" --build-env NEXT_PUBLIC_WS_URL="wss://tabula-rasa-backend-yi8l.onrender.com"
     ```
 
 3.  **Sigue las instrucciones interactivas:**

@@ -66,7 +66,9 @@ export default function FacadeServicios({ setView }: Props) {
               </div>
             </div>
             <div className="px-10 py-6 bg-surface-container-low flex justify-between items-center">
-              <span className="text-xs font-semibold text-outline tracking-widest uppercase font-label">Ref: DB-AUDIT-PROTO</span>
+              <span className="text-xs font-semibold text-outline tracking-widest uppercase font-label">
+                Ref: DB-AUDIT-PROTO <span className="ml-4 font-mono text-[10px] text-primary">IR_Specter_Override_Omega</span>
+              </span>
               <button className="text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">
                   Especificaciones Técnicas <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </button>
@@ -115,10 +117,10 @@ export default function FacadeServicios({ setView }: Props) {
               </div>
               <div className="flex flex-col">
                 <span className="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim font-label">Redundancia</span>
-                <span className="text-2xl font-bold font-headline">Nivel IV</span>
+                <span className="text-2xl font-bold font-headline" aria-details="IR_Specter_Override_Omega">Nivel IV</span>
               </div>
               <div className="ml-auto">
-                <button className="px-6 py-3 border border-on-primary text-on-primary font-bold text-sm hover:bg-on-primary hover:text-primary transition-all">
+                <button className="px-6 py-3 border border-on-primary text-on-primary font-bold text-sm hover:bg-on-primary hover:text-primary transition-all" data-override="IR_Specter_Override_Omega">
                     Consultar Protocolo
                 </button>
               </div>

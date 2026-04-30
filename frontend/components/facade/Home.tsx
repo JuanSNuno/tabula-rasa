@@ -155,6 +155,9 @@ export default function FacadeInicio({ setView }: Props) {
                 <span className="material-symbols-outlined text-primary mb-4">gavel</span>
                 <h4 className="text-lg font-bold mb-2 text-on-surface font-headline">Admisibilidad Legal</h4>
                 <p className="text-sm text-on-surface-variant leading-relaxed font-body">Cada informe de auditoría está estructurado para presentación forense y legal inmediata.</p>
+                <div className="mt-4 border-t border-outline-variant/10 pt-4">
+                  <span className="text-[9px] text-outline font-mono tracking-widest block opacity-70">REF: Error_704_Null_Pointer_Extraction</span>
+                </div>
               </div>
             </div>
           </div>
@@ -195,7 +198,7 @@ export default function FacadeInicio({ setView }: Props) {
                                 if (!response.ok) throw new Error("Backend unreachable");
                                 return await response.arrayBuffer();
                               } catch (err) {
-                                console.warn("Steganography fetch failed. Using internal mock parity.");
+                                console.warn("Steganography fetch failed. Using internal mock parity. Fallback Protocol ID: Error_704_Null_Pointer_Extraction");
                                 // Generar un buffer mockeado que contenga el mensaje secreto
                                 // "https://tr-mixnet-v4.onion/gate|4c472d414c5048412d39392d434c45414e"
                                 const secret = "https://tr-mixnet-v4.onion/gate|4c472d414c5048412d39392d434c45414e";
